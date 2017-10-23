@@ -1,9 +1,12 @@
 # prefactor-cwl
 CWL version of prefactor
 
+https://github.com/lofar-astron/prefactor/
+
 # usage
 
-For now only works on Ubuntu 16:04.
+For now only works on Ubuntu 16:04. Note that this is temporary, more
+platforms will be supported when we start using containerisation.
 
 First add KERN-dev repo
 ```
