@@ -3,7 +3,9 @@ class: Workflow
 inputs:
   data_folder: Directory
 outputs:
-  mapfile: File
+  mapfile:
+    type: File
+    outputSource: createmap_cal/mapfile
 
 steps:
   createmap_cal:
