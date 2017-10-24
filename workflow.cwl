@@ -1,11 +1,9 @@
 cwlVersion: v1.0
 class: Workflow
 inputs:
-  data_folder:
-    type: Directory
+  data_folder: Directory
 outputs:
-  mapfile:
-    type: File
+  mapfile: File
 
 steps:
   createmap_cal:
@@ -14,4 +12,11 @@ steps:
       folder: data_folder
     out:
       [mapfile]
+
+  #ndppp_prep_cal:
+    #run: ndppp_prep_cal.cwl
+    #in:
+    #  msin:  createmap_cal/mapfile
+    #out:
+    #  -
 

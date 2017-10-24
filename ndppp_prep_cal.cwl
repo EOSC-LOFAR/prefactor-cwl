@@ -24,16 +24,15 @@ inputs:
   msin:
     type: File
     inputBinding:
-        itemSeparator: "="
+        prefix: "="
         separate: False
 
   steps:
     type: string
     default: "[flag,filter,avg,flagamp]"
     inputBinding:
-        itemSeparator: "="
+        prefix: "="
         separate: False
 
 outputs:
-  msout:
-    type: Directory
+  -
