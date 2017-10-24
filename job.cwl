@@ -1,3 +1,3 @@
-ms:
+data_folder:
   class: Directory
-  path: data/L591513_SB000_uv.MS
+  path: data/

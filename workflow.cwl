@@ -1,7 +1,7 @@
 cwlVersion: v1.0
 class: Workflow
 inputs:
-  ms:
+  data_folder:
     type: Directory
 outputs:
   mapfile:
@@ -11,7 +11,7 @@ steps:
   createmap_cal:
     run: createmap_cal.cwl
     in:
-      ms: ms
+      folder: data_folder
     out:
       [mapfile]
 
