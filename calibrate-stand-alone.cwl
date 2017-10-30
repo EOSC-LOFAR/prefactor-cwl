@@ -31,11 +31,10 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: [/usr/bin/calibrate-stand-alone]
 requirements:
-  EnvVarRequirement:
+  - class: InlineJavascriptRequirement
+  - class: EnvVarRequirement
     envDef:
       LOFARROOT: /usr
-requirements:
-  - class: InlineJavascriptRequirement
 
 inputs:
   observation:
