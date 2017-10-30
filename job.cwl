@@ -6,8 +6,6 @@ calibration_parset:
   class: File
   path: /usr/share/prefactor/parsets/calibcal.parset
 
-numthreads: 50
-
 skymodel: 
   class: File
   path: /usr/share/prefactor/skymodels/3c295-twocomp.skymodel

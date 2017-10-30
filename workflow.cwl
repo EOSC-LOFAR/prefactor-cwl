@@ -4,7 +4,6 @@ inputs:
   msin: Directory
   calibration_parset: File
   skymodel: File
-  numthreads: int
 outputs:
   msout: 
     type: Directory
@@ -24,6 +23,5 @@ steps:
         observation: ndppp_prep_cal/msout
         parset: calibration_parset
         catalog: skymodel
-        numthreads: numthreads
     out:
         [msout]

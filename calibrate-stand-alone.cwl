@@ -53,10 +53,9 @@ inputs:
     inputBinding:
       position: 3
 
-  numthreads:
-    type: int?
-    inputBinding:
-      prefix: --numthreads
+arguments:
+ - valueFrom: $(runtime.cores)
+   prefix: --numthreads
 
 outputs:
   msout:
