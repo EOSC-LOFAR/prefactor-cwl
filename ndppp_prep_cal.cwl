@@ -18,21 +18,52 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: [NDPPP]
+baseCommand: [NDPPP, avg.type=average, flag.type=preflagger, flagamp.type=preflagger]
 
 inputs:
   msin:
-    type: File
+    type: Directory
     inputBinding:
-        prefix: "="
-        separate: False
+      prefix: "msin="
+      separate: False
+
+  msout:
+    type: string
+    default: "out.MS"
+    inputBinding:
+     prefix: "msout="
+     separate: False
 
   steps:
     type: string
     default: "[flag,filter,avg,flagamp]"
     inputBinding:
-        prefix: "="
-        separate: False
+      prefix: "steps="
+      separate: False
+
+  baseline:
+    type: string
+    default: "[CS013HBA*]"
+    inputBinding:
+      prefix: "baseline="
+      separate: False
+
+  avg.timeresolution:
+    type: int
+    default: 4
+    inputBinding:
+      prefix: "average.timeresolution="
+      separate: False
+
+  avg.freqresolution:
+    type: string
+    default: "48.82kHz"
+    inputBinding:
+      prefix: "average.freqresolution="
+      separate: False
 
 outputs:
-  -
+  ms:
+    type: Directory
+    outputBinding:
+      glob: "out.MS"
