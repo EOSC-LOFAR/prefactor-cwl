@@ -9,3 +9,5 @@ calibration_parset:
 skymodel: 
   class: File
   path: /usr/share/prefactor/skymodels/3c295-twocomp.skymodel
+
+n_channels: 4
