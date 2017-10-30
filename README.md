@@ -18,7 +18,7 @@ $ sudo apt-get update
 
 Then install requirements:
 ```
-$ sudo apt install lofar
+$ sudo apt install lofar prefactor
 ```
 
 # steps

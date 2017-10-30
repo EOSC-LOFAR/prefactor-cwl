@@ -13,10 +13,10 @@ clean:
 	.virtualenv/bin/pip install -r requirements.txt
 
 run: .virtualenv/bin/cwltool
-#--cachedir cache 
+	#--enable-ext 
 	.virtualenv/bin/cwltool \
 		--debug \
-		--enable-ext \
+		--cachedir cache \
 		--outdir results \
 		workflow.cwl \
 		job.cwl

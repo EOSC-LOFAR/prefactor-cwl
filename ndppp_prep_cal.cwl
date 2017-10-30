@@ -18,7 +18,8 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: [NDPPP, avg.type=average, flag.type=preflagger, flagamp.type=preflagger]
+# TODO: make output name configurable or use input name
+baseCommand: [NDPPP, avg.type=average, flag.type=preflagger, flagamp.type=preflagger, msout=out.MS]
 
 inputs:
   msin:
@@ -26,13 +27,6 @@ inputs:
     inputBinding:
       prefix: "msin="
       separate: False
-
-  msout:
-    type: string
-    default: "out.MS"
-    inputBinding:
-     prefix: "msout="
-     separate: False
 
   steps:
     type: string
@@ -63,7 +57,7 @@ inputs:
       separate: False
 
 outputs:
-  ms:
+  msout:
     type: Directory
     outputBinding:
-      glob: "out.MS"
+      glob: "*.MS"

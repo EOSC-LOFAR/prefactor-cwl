@@ -1,3 +1,5 @@
 .virtualenv/
 *.swp
 data
+cache/*
+results/*

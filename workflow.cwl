@@ -1,24 +1,29 @@
 cwlVersion: v1.0
 class: Workflow
 inputs:
-  data_folder: Directory
+  msin: Directory
+  calibration_parset: File
+  skymodel: File
+  numthreads: int
 outputs:
-  mapfile:
-    type: File
-    outputSource: createmap_cal/mapfile
+  msout: 
+    type: Directory
+    outputSource: calibrate-stand-alone/msout
 
 steps:
-  createmap_cal:
-    run: createmap_cal.cwl
+  ndppp_prep_cal:
+    run: ndppp_prep_cal.cwl
     in:
-      folder: data_folder
+      msin: msin
     out:
-      [mapfile]
+        [msout]
 
-  #ndppp_prep_cal:
-    #run: ndppp_prep_cal.cwl
-    #in:
-    #  msin:  createmap_cal/mapfile
-    #out:
-    #  -
-
+  calibrate-stand-alone:
+    run: calibrate-stand-alone.cwl
+    in:
+        observation: ndppp_prep_cal/msout
+        parset: calibration_parset
+        catalog: skymodel
+        numthreads: numthreads
+    out:
+        [msout]
