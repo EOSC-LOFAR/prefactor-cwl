@@ -8,6 +8,9 @@ outputs:
   msout: 
     type: Directory
     outputSource: calibrate-stand-alone/msout
+  h5:
+    type: File
+    outputSource: losoto_importer/h5
 
 steps:
   ndppp_prep_cal:
