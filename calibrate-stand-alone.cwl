@@ -35,6 +35,10 @@ requirements:
   - class: EnvVarRequirement
     envDef:
       LOFARROOT: /usr
+  - class: InitialWorkDirRequirement
+    listing:
+      - entry: $(inputs.observation)
+        writable: true
 
 inputs:
   observation:
@@ -53,7 +57,8 @@ inputs:
       position: 3
 
 arguments:
- - valueFrom: $(runtime.cores)
+ #- valueFrom: $(runtime.cores)
+ - valueFrom: "50"
    prefix: --numthreads
 
 outputs:
