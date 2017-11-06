@@ -3,6 +3,9 @@ CWL version of prefactor
 
 https://github.com/lofar-astron/prefactor/
 
+[![Build
+Status](https://travis-ci.org/gijzelaerr/prefactor-cwl.svg?branch=master)](https://travis-ci.org/gijzelaerr/prefactor-cwl)
+
 # usage
 
 For now only works on Ubuntu 16:04. Note that this is temporary, more
