@@ -64,11 +64,20 @@ steps:
       [dTEC_1st, dTEC_1st.sm, dclock_1st, dclock_1st.sm]
 
 ## skip: test set has 16 subbands, we need > 20
-#  amplitudes_losoto_3:
-#    run: steps/amplitudes_losoto_3.cwl
-#    in:
-#      n_chan: n_channels
-#      globaldbname: losoto_importer/h5
-#    out:
-#      [h5]
+  amplitudes_losoto_3:
+    run: steps/amplitudes_losoto_3.cwl
+    in:
+      n_chan: n_channels
+      globaldbname: losoto_importer/h5
+    out:
+      [amplitude_array]
 
+  plot:
+    run: steps/plots.cwl
+    in:
+      amplitude_array: amplitudes_losoto_3/amplitude_array
+      dclock_1st: fit_clocktec_initialguess_losoto/dclock_1st
+      dclock_1st.sm: fit_clocktec_initialguess_losoto/dclock_1st.sm
+      dtec_1st.sm: fit_clocktec_initialguess_losoto/dTEC_1st.sm
+    out:
+      [dtec_allsols, dclock_allsols, amp_allsols]

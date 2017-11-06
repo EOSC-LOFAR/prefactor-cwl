@@ -6,4 +6,4 @@ calibration_parset:
   class: File
   path: /usr/share/prefactor/parsets/calibcal.parset
 
-n_channels: 4
+n_channels: 2

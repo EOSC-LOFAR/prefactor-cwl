@@ -31,18 +31,21 @@ inputs:
       position: 1
 
   instrument:
-    type: string?
+    type: string
     doc: "Name of instrument tables of measurement sets. If starts with '/' -> instrument table is sub- directory within the MS directory"
+    default: "/instrument"
 
   solset:
-    type: string?
+    type: string
     doc: "Solution-set name"
+    default: "sol000"
     inputBinding:
       prefix: -s
 
   complevel:
-    type: int?
+    type: int
     doc: "Compression level from 0 (no compression, fast) to 9"
+    default: 7
     inputBinding:
       prefix: -c   
 

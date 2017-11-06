@@ -29,6 +29,8 @@ inputs:
   n_chan:
     type: int
     doc: "number of channels solved for per subband (i.e., number of solutions along frequencies axis of MS)"
+    inputBinding:
+      position: 3
 
   bad_sblist:
     type: int[]?
@@ -36,14 +38,12 @@ inputs:
       position: 4
 
 arguments:
+ # calsource
  - valueFrom: "fitclock"
    position: 2
 
- - valueFrom: $(runtime.cores)
-   position: 3
-
 outputs:
-  h5:
+  amplitude_array:
     type: File
     outputBinding:
-      glob: "*.h5"
+      glob: "fitclock_amplitude_array.npy"
