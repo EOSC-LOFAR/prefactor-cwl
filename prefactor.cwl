@@ -54,30 +54,46 @@ steps:
     in:
       msin: calibrate-stand-alone/msout
     out:
-      [h5]
+      [losoto_h5]
 
   fit_clocktec_initialguess_losoto:
     run: steps/fit_clocktec_initialguess_losoto.cwl
     in:
-      globaldbname: losoto_importer/h5
+      globaldbname: losoto_importer/losoto_h5
     out:
       [dTEC_1st, dTEC_1st.sm, dclock_1st, dclock_1st.sm]
 
-## skip: test set has 16 subbands, we need > 20
-  amplitudes_losoto_3:
-    run: steps/amplitudes_losoto_3.cwl
-    in:
-      n_chan: n_channels
-      globaldbname: losoto_importer/h5
-    out:
-      [amplitude_array]
+# disabled until we have a bigger dataset
+#
+#  amplitudes_losoto_3:
+#    run: steps/amplitudes_losoto_3.cwl
+#    in:
+#      n_chan: n_channels
+#      globaldbname: losoto_importer/h5
+#    out:
+#      [amplitude_array]
+#
+#  plot:
+#    run: steps/plots.cwl
+#    in:
+#      amplitude_array: amplitudes_losoto_3/amplitude_array
+#      dclock_1st: fit_clocktec_initialguess_losoto/dclock_1st
+#      dclock_1st.sm: fit_clocktec_initialguess_losoto/dclock_1st.sm
+#      dtec_1st.sm: fit_clocktec_initialguess_losoto/dTEC_1st.sm
+#    out:
+#      [dtec_allsols, dclock_allsols, amp_allsols]
 
-  plot:
-    run: steps/plots.cwl
+  phase:
+    run: steps/phase.cwl
     in:
-      amplitude_array: amplitudes_losoto_3/amplitude_array
-      dclock_1st: fit_clocktec_initialguess_losoto/dclock_1st
-      dclock_1st.sm: fit_clocktec_initialguess_losoto/dclock_1st.sm
-      dtec_1st.sm: fit_clocktec_initialguess_losoto/dTEC_1st.sm
+      losoto: losoto_importer/losoto_h5
     out:
-      [dtec_allsols, dclock_allsols, amp_allsols]
+      - freqs_for_phase_array
+      - phase_array
+      - station_names
+      - phase_xx_yy_offset
+
+
+
+
+

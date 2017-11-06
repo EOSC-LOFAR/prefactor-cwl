@@ -55,7 +55,7 @@ inputs:
       prefix: -v 
 
 outputs:
-  h5:
+  losoto_h5:
     type: File
     outputBinding:
       glob: "losoto.h5"

@@ -10,8 +10,8 @@ requirements:
       PYTHONPATH: /usr/lib/prefactor/scripts/
 
 inputs:
-  losotoname:
-    type: string
+  losoto:
+    type: File
 
   refstation_id:
     type: int?
@@ -25,7 +25,7 @@ arguments:
   - prefix: -c
     valueFrom: |
       from find_cal_global_phaseoffset_losoto import main
-      main(losotoname="$(inputs.losotoname)",
+      main(losotoname="$(inputs.losoto.path)",
            store_basename="cwl",
            refstationID=$(inputs.refstation_id),
            sourceID=$(inputs.source_id)
@@ -37,12 +37,12 @@ outputs:
       outputBinding:
         glob: "freqs_for_phase_array.npy"
 
-    cwl_phase_array:
+    phase_array:
       type: File
       outputBinding:
         glob: "cwl_phase_array.npy"
 
-    cwl_station_names:
+    station_names:
       type: File
       outputBinding:
         glob: "cwl_station_names.npy"
