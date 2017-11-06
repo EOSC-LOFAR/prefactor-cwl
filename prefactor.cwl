@@ -8,21 +8,13 @@ inputs:
   reference_station: string
 
 outputs:
-  dTEC_1st:
+  polXX_dirpointing:
     type: File
-    outputSource: fitclock/dTEC_1st
+    outputSource: plot_cal_phases/polXX_dirpointing
 
-  dTEC_1st.sm:
+  polYY_dirpointing:
     type: File
-    outputSource: fitclock/dTEC_1st.sm
-
-  dclock_1st:
-    type: File
-    outputSource: fitclock/dclock_1st
-
-  dclock_1st.sm:
-    type: File
-    outputSource: fitclock/dTEC_1st.sm
+    outputSource: plot_cal_phases/polYY_dirpointing
 
 
 
