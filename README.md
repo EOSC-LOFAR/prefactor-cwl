@@ -25,25 +25,25 @@ $ sudo apt install lofar prefactor
 
 the pipeline consists of these steps:
 
- * createmap_cal
- * ndppp_prep_cal
- * combine_data_cal_map
- * sky_cal
- * sky_cal_path
- * calib_cal
- * h5_imp_cal_map
- * h5imp_cal
- * mk_inspect_dir
- * copy_h5imp_cal
+ * createmap\_cal (we don't use map files)
+ * ndppp\_prep\_cal **ndppp\_prep\_cal.cwl**
+ * combine\_data\_cal\_map (skip, we don't use map)
+ * sky\_cal
+ * sky\_cal\_path
+ * calib\_cal
+ * h5\_imp\_cal\_map
+ * h5imp\_cal
+ * mk\_inspect\_dir
+ * copy\_h5imp\_cal
  * fitclock
  * ampl
  * plots
  * phase
- * plot_cal_phases
- * createmap_cal_pngs
- * copy_cal_pngs
- * createmap_cal_txts
- * copy_cal_txts
- * mk_cal_values_dir
- * createmap_cal_npys
- * copy_cal_npys
+ * plot\_cal\_phases
+ * createmap\_cal\_pngs
+ * copy\_cal\_pngs
+ * createmap\_cal\_txts
+ * copy\_cal\_txts
+ * mk\_cal\_values\_dir
+ * createmap\_cal\_npys
+ * copy\_cal\_npys

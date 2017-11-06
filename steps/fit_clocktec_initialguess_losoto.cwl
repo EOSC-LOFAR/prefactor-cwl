@@ -36,7 +36,22 @@ arguments:
    position: 3
 
 outputs:
-  h5:
+  dclock_1st:
     type: File
     outputBinding:
-      glob: "*.h5"
+      glob: fitted_data_dclock_fitclock_1st.npy
+
+  dTEC_1st:
+    type: File
+    outputBinding:
+      glob: fitted_data_dTEC_fitclock_1st.npy
+        
+  dclock_1st.sm:
+    type: File
+    outputBinding:
+      glob: fitted_data_dclock_fitclock_1st.sm.npy
+
+  dTEC_1st.sm:
+    type: File
+    outputBinding:
+      glob: fitted_data_dTEC_fitclock_1st.sm.npy

@@ -1,5 +1,5 @@
 .virtualenv/
 *.swp
-data
+data/*.MS/
 cache/*
 results/*

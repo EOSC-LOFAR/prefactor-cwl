@@ -4,19 +4,21 @@ all: run
 
 
 clean:
-	    rm -rf .virtualenv
+	rm -rf .virtualenv
 
 .virtualenv/:
 	virtualenv -p python2 .virtualenv
-
+ 
 .virtualenv/bin/cwltool: .virtualenv/
 	.virtualenv/bin/pip install -r requirements.txt
 
-run: .virtualenv/bin/cwltool
-	#--enable-ext 
+data/L591513_SB000_uv_delta_t_4.MS/:
+	cd data && tar Jxvf L591513_SB000_uv_delta_t_4.MS.tar.xz
+
+run: data/L591513_SB000_uv_delta_t_4.MS/ .virtualenv/bin/cwltool
+		#--debug \
 	.virtualenv/bin/cwltool \
-		--debug \
 		--cachedir cache \
 		--outdir results \
-		workflow.cwl \
+		prefactor.cwl \
 		job.cwl
