@@ -5,6 +5,7 @@ inputs:
   msin: Directory
   calibration_parset: File
   n_channels: int
+  reference_station: string
 
 outputs:
   dTEC_1st:
@@ -93,7 +94,10 @@ steps:
       - station_names
       - phase_xx_yy_offset
 
-
-
-
-
+  plot_cal_phases:
+    run: steps/plot_cal_phases.cwl
+    in:
+      h5parm: losoto_importer/losoto_h5
+      reference_station: reference_station
+    out:
+      [polXX_dirpointing, polYY_dirpointing]

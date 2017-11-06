@@ -7,3 +7,6 @@ calibration_parset:
   path: /usr/share/prefactor/parsets/calibcal.parset
 
 n_channels: 2
+
+reference_station: CS001HBA0
+

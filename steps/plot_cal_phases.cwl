@@ -40,10 +40,9 @@ requirements:
           LoSoTo.Steps.plot.Axes       =  [time,freq]
           LoSoTo.Steps.plot.TableAxis  =  [ant]
           LoSoTo.Steps.plot.ColorAxis  =  [pol]
-          # {{ reference_station }}
-          LoSoTo.Steps.plot.Reference  =  CS001HBA0 
+          LoSoTo.Steps.plot.Reference  =  $(inputs.reference_station) 
           LoSoTo.Steps.plot.PlotFlag   =  False
-          LoSoTo.Steps.plot.Prefix     =  /cal_phases_
+          LoSoTo.Steps.plot.Prefix     =  cwl_
 
 inputs:
   h5parm:
@@ -51,12 +50,20 @@ inputs:
     inputBinding:
       position: 1
 
+  reference_station:
+    type: string
+
 arguments:
   - valueFrom: losoto.parset
     position: 2
   
 outputs:
-  todo:
+  polXX_dirpointing:
     type: File
     outputBinding:
-      glob: "losoto.parset"
+      glob: "cwl_polXX_dirpointing.png"
+
+  polYY_dirpointing:
+    type: File
+    outputBinding:
+      glob: "cwl_polYY_dirpointing.png"
