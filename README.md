@@ -37,20 +37,20 @@ the pipeline consists of these steps:
 | combine\_data\_cal\_map | skip        |  |We don't use map files   |
 | sky\_cal                | implemented | [steps/sky_cal.cwl](steps/sky_cal.cwl)    |
 | sky\_cal\_path          | skip        |  |we don't use map files   |
-| calib\_cal              | implemented | [steps/steps/calibrate-stand-alone.cwl]() |
+| calib\_cal              | implemented | [steps/steps/calibrate-stand-alone.cwl](steps/steps/calibrate-stand-alone.cwl) |
 | h5\_imp\_cal\_map       | skip        |  |we don't use map files   |
-| h5imp\_cal              | implemented | [](steps/losoto_importer.cwl) |
+| h5imp\_cal              | implemented | [steps/losoto_importer.cwl](steps/losoto_importer.cwl) |
 | mk\_inspect\_dir        | skip        |  | we don't need to create dirs |
-| copy\_h5imp\_cal        | skip        |  |we don't need to copy things |
-| fitclock                | implemented | steps/fit_clocktec_initialguess_losoto.cwl |
-| ampl                    | implemented | steps/amplitudes_losoto_3.cwl  | disabled for test since not enough subbands
-| plots                   | 
-| phase                   |
-| plot\_cal\_phases       |
-| createmap\_cal\_pngs    |
-| copy\_cal\_pngs         |
-| createmap\_cal\_txts    |
-| copy\_cal\_txts         |
-| mk\_cal\_values\_dir    |
-| createmap\_cal\_npys    |
-| copy\_cal\_npys         |
+| copy\_h5imp\_cal        | skip        |  | this is managed by CWL |
+| fitclock                | implemented | [steps/fit_clocktec_initialguess_losoto.cwl](steps/fit_clocktec_initialguess_losoto.cwl) |
+| ampl                    | implemented | [steps/amplitudes_losoto_3.cwl](steps/amplitudes_losoto_3.cwl)  | disabled for test since not enough subbands
+| plots                   | implemented | [steps/plots.cwl](steps/plots.cwl) | 
+| phase                   | implemented | [steps/phase.cwl](steps/phase.cwl) |
+| plot\_cal\_phases       | implemented | [steps/plot_cal_phases.cwl](steps/plot_cal_phases.cwl) |
+| createmap\_cal\_pngs    | skip        | | we don't use map files |
+| copy\_cal\_pngs         | skip        | | this is managed by CWL |
+| createmap\_cal\_txts    | skip        | | we don't use map files |
+| copy\_cal\_txts         | skip        | | this is managed by CWL |
+| mk\_cal\_values\_dir    | skip        | | this is managed by CWL |
+| createmap\_cal\_npys    | skip        | | we don't use map files |
+| copy\_cal\_npys         | skip        | | this is managed by CWL |
