@@ -16,7 +16,6 @@ data/L591513_SB000_uv_delta_t_4.MS/:
 	cd data && tar Jxvf L591513_SB000_uv_delta_t_4.MS.tar.xz
 
 run: data/L591513_SB000_uv_delta_t_4.MS/ .virtualenv/bin/cwltool
-		#--debug \
 	.virtualenv/bin/cwltool \
 		--cachedir cache \
 		--outdir results \

@@ -37,14 +37,14 @@ the pipeline consists of these steps:
 | combine\_data\_cal\_map | skip        |  |We don't use map files   |
 | sky\_cal                | implemented | [steps/sky_cal.cwl](steps/sky_cal.cwl)    |
 | sky\_cal\_path          | skip        |  |we don't use map files   |
-| calib\_cal              | implemented | [steps/steps/calibrate-stand-alone.cwl](steps/steps/calibrate-stand-alone.cwl) |
+| calib\_cal              | implemented | [steps/steps/calib_cal.cwl](steps/steps/calib_cal.cwl) |
 | h5\_imp\_cal\_map       | skip        |  |we don't use map files   |
 | h5imp\_cal              | implemented | [steps/losoto_importer.cwl](steps/losoto_importer.cwl) |
 | mk\_inspect\_dir        | skip        |  | we don't need to create dirs |
 | copy\_h5imp\_cal        | skip        |  | this is managed by CWL |
-| fitclock                | implemented | [steps/fit_clocktec_initialguess_losoto.cwl](steps/fit_clocktec_initialguess_losoto.cwl) |
-| ampl                    | implemented | [steps/amplitudes_losoto_3.cwl](steps/amplitudes_losoto_3.cwl)  | disabled for test since not enough subbands
-| plots                   | implemented | [steps/plots.cwl](steps/plots.cwl) | 
+| fitclock                | implemented | [steps/fitclock.cwl](steps/fitclock.cwl) |
+| ampl                    | implemented | [steps/ampl.cwl](steps/ampl.cwl)  | disabled for test since not enough subbands
+| plots                   | implemented | [steps/plots.cwl](steps/plots.cwl) | disabled for test since not enough subbands
 | phase                   | implemented | [steps/phase.cwl](steps/phase.cwl) |
 | plot\_cal\_phases       | implemented | [steps/plot_cal_phases.cwl](steps/plot_cal_phases.cwl) |
 | createmap\_cal\_pngs    | skip        | | we don't use map files |
