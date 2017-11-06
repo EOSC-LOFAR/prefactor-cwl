@@ -4,7 +4,6 @@ class: Workflow
 inputs:
   msin: Directory
   calibration_parset: File
-  skymodel: File
   n_channels: int
 
 outputs:
@@ -34,12 +33,19 @@ steps:
     out:
         [msout]
 
+  sky_cal:
+    run: steps/sky_cal.cwl
+    in:
+      ms: ndppp_prep_cal/msout
+    out:
+      [skymodel]
+
   calibrate-stand-alone:
     run: steps/calibrate-stand-alone.cwl
     in:
       observation: ndppp_prep_cal/msout
       parset: calibration_parset
-      catalog: skymodel
+      catalog: sky_cal/skymodel
     out:
       [msout]
 
