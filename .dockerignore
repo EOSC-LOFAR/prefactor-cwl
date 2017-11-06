@@ -1,0 +1,5 @@
+.virtualenv/
+*.swp
+data/*.MS/
+cache/*
+results/*

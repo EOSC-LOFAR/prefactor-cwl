@@ -1,0 +1,12 @@
+language: c
+sudo: required
+services:
+- docker
+before_install:
+- true
+install:
+- docker build -t prefactor .
+before_script:
+- true
+script:
+- true
