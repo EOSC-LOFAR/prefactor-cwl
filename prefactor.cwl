@@ -8,6 +8,22 @@ inputs:
   reference_station: string
 
 outputs:
+  phase_xx_yy_offset:
+    type: File
+    outputSource: phase/phase_xx_yy_offset
+
+  freqs_for_phase_array:
+    type: File
+    outputSource: phase/freqs_for_phase_array
+
+  phase_array:
+    type: File
+    outputSource: phase/phase_array
+
+  station_names:
+    type: File
+    outputSource: phase/station_names
+
   polXX_dirpointing:
     type: File
     outputSource: plot_cal_phases/polXX_dirpointing
