@@ -1,24 +1,15 @@
-# from the parset:
-#
-# ! find_skymodel_cal_auto    = /usr/lib/prefactor/scripts/find_skymodel_cal.py
-#
-# set this to True if you want the pipeline run to continue if single bands fail
-# ! error_tolerance           =  False
-#
-# # Either: the path to the skymodel for the calibrator (ASCII-file)
-# or: the path to a directory with the skymodels for the different calibrators
-#! calibrator_path_skymodel = /usr/share/prefactor/skymodels/
-#
-#sky_cal.control.type               = pythonplugin
-#sky_cal.control.executable         = {{ find_skymodel_cal_auto }}
-#sky_cal.control.error_tolerance    = {{ error_tolerance }}
-#sky_cal.argument.flags             = [combine_data_cal_map.output.mapfile]
-#sky_cal.argument.DirSkymodelCal    = {{ calibrator_path_skymodel }}
-
 cwlVersion: v1.0
 class: CommandLineTool
 
 baseCommand: python
+
+hints:
+  DockerRequirement:
+      dockerImageId: kernsuite/prefactor
+      dockerFile: |
+        FROM kernsuite/base:3
+        RUN docker-apt-install prefactor
+
 requirements:
   - class: InlineJavascriptRequirement
   - class: EnvVarRequirement

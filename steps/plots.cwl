@@ -1,5 +1,5 @@
-# plotsols_script           = /usr/lib/prefactor/scripts/examine_npys.py
-# and generate some output plots
+# below the parameters from the prefactor parset
+# 
 #plots.control.kind             = recipe
 #plots.control.type             = executable_args
 #plots.control.mapfile_in       = h5imp_cal.output.h5parm.mapfile
@@ -7,10 +7,16 @@
 #plots.control.skip_infile      = True
 #plots.control.arguments        = [caldata_transfer]
 
-
 cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: python
+
+hints:
+  DockerRequirement:
+      dockerImageId: kernsuite/prefactor
+      dockerFile: |
+        FROM kernsuite/base:3
+        RUN docker-apt-install prefactor
 
 inputs:
   amplitude_array:

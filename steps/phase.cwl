@@ -1,4 +1,8 @@
 # /usr/lib/prefactor/scripts/find_cal_global_phaseoffset_losoto.py
+# 
+# Since we can't run this script from the command line we call it
+# from python. 
+# 
 cwlVersion: v1.0
 class: CommandLineTool
 
@@ -8,6 +12,13 @@ requirements:
   - class: EnvVarRequirement
     envDef:
       PYTHONPATH: /usr/lib/prefactor/scripts/
+
+hints:
+  DockerRequirement:
+      dockerImageId: kernsuite/prefactor
+      dockerFile: |
+        FROM kernsuite/base:3
+        RUN docker-apt-install prefactor
 
 inputs:
   losoto:

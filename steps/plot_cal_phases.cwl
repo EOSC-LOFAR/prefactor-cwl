@@ -21,6 +21,14 @@ cwlVersion: v1.0
 class: CommandLineTool
 
 baseCommand: losoto
+
+hints:
+  DockerRequirement:
+      dockerImageId: kernsuite/prefactor
+      dockerFile: |
+        FROM kernsuite/base:3
+        RUN docker-apt-install prefactor
+
 requirements:
   InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
@@ -43,6 +51,8 @@ requirements:
           LoSoTo.Steps.plot.Reference  =  $(inputs.reference_station) 
           LoSoTo.Steps.plot.PlotFlag   =  False
           LoSoTo.Steps.plot.Prefix     =  cwl_
+      - entry: $(inputs.h5parm)
+        writable: true
 
 inputs:
   h5parm:

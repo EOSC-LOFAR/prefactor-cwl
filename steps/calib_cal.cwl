@@ -30,6 +30,14 @@
 cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: [/usr/bin/calibrate-stand-alone]
+
+hints:
+  DockerRequirement:
+      dockerImageId: kernsuite/lofar
+      dockerFile: |
+        FROM kernsuite/base:3
+        RUN docker-apt-install lofar
+
 requirements:
   - class: InlineJavascriptRequirement
   - class: EnvVarRequirement

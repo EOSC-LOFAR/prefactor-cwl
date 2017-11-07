@@ -1,27 +1,13 @@
-# $   /usr/lib/prefactor/scripts/losotoImporter.py --help
-# Usage: losotoImporter.py [-v] <H5parm> <MSPattern>
-#   <H5parm>    = (Path)name of the (new) H5parm file to be written.
-#   <MSPattern> = Search pattern for the measurement sets with instrument tables.
-#                 (e.g. "/data/scratch/MyObs/calibrator/L*.dppp")
-#                 Probably needs to be put in quotes when called from a shell!
-# 
-# Options:
-#   -h, --help            show this help message and exit
-#   -i INSTRUMENT, --instrument=INSTRUMENT
-#                         Name of the instrument tables of the measurement sets.
-#                         If it starts with "/" -> instrument table is sub-
-#                         directory within the MS directory.
-#                         (default="/instrument")
-#   -v, --verbose         Go Vebose! (default=False)
-#   -s SOLSET, --solset=SOLSET
-#                         Solution-set name (default=sol###)
-#   -c COMPLEVEL, --complevel=COMPLEVEL
-#                         Compression level from 0 (no compression, fast) to 9
-#                         (max compression, slow) (default=5)
-
 cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: [python, /usr/lib/prefactor/scripts/losotoImporter.py, losoto.h5]
+
+hints:
+  DockerRequirement:
+      dockerImageId: kernsuite/prefactor
+      dockerFile: |
+        FROM kernsuite/base:3
+        RUN docker-apt-install prefactor
 
 inputs:
   msin:

@@ -32,6 +32,14 @@ class: CommandLineTool
 baseCommand: [python,
              /usr/lib/python2.7/dist-packages/lofarpipe/recipes/plugins/PipelineStep_createMapfile.py,
              createmap_cal.mapfile]
+
+hints:
+  DockerRequirement:
+      dockerImageId: kernsuite/prefactor
+      dockerFile: |
+        FROM kernsuite/base:3
+        RUN docker-apt-install prefactor
+
 inputs:
   number:
     type: int?

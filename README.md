@@ -3,26 +3,14 @@ CWL version of prefactor
 
 https://github.com/lofar-astron/prefactor/
 
-[![Build
-Status](https://travis-ci.org/gijzelaerr/prefactor-cwl.svg?branch=master)](https://travis-ci.org/gijzelaerr/prefactor-cwl)
+[![Build Status](https://travis-ci.org/gijzelaerr/prefactor-cwl.svg?branch=master)](https://travis-ci.org/gijzelaerr/prefactor-cwl)
 
+# requirements
+
+* [Docker](https://www.docker.com/)
+* A [CWL](http://www.commonwl.org/) runner (like [CWLtool](https://github.com/common-workflow-language/cwltool))
 # usage
 
-For now only works on Ubuntu 16:04. Note that this is temporary, more
-platforms will be supported when we start using containerisation.
-
-First add KERN-dev repo
-```bash
-$ sudo apt-get install software-properties-common
-$ sudo add-apt-repository -s ppa:kernsuite/kern-dev
-$ sudo apt-add-repository multiverse
-$ sudo apt-get update
-```
-
-Then install requirements:
-```bash
-$ sudo apt install lofar prefactor python-virtualenv
-```
 
 To run the pipeline with the example dataset just run:
 ```bash

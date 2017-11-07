@@ -1,3 +1,5 @@
+# below the definition in the prefactor parset
+#
 # msin                   = createmap_cal.output.mapfile # The input data.
 # msin.datacolumn        = DATA
 # msin.baseline          = CS*&; RS*&; CS*&RS*
@@ -18,8 +20,14 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-# TODO: make output name configurable or use input name
 baseCommand: [NDPPP, avg.type=average, flag.type=preflagger, flagamp.type=preflagger, msout=out.MS]
+
+hints:
+  DockerRequirement:
+      dockerImageId: kernsuite/lofar
+      dockerFile: |
+        FROM kernsuite/base:3
+        RUN docker-apt-install lofar
 
 inputs:
   msin:
@@ -60,4 +68,4 @@ outputs:
   msout:
     type: Directory
     outputBinding:
-      glob: "*.MS"
+      glob: "out.MS"
