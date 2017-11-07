@@ -1,5 +1,5 @@
 FROM kernsuite/base:3
-RUN docker-apt-install lofar prefactor python-pip make
+RUN docker-apt-install lofar prefactor python-pip make nodejs-legacy
 RUN pip install cwltool
 ADD . /code
 WORKDIR /code/data
