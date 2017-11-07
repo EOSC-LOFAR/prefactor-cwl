@@ -1,4 +1,4 @@
-language: c
+language: node_js
 sudo: required
 services:
 - docker
