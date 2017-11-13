@@ -18,13 +18,15 @@ clean:
 data/L591513_SB000_uv_delta_t_4.MS/:
 	cd data && tar Jxvf L591513_SB000_uv_delta_t_4.MS.tar.xz
 
+data/L570745_SB000_uv_first10.MS/:
+	cd data && tar Jxvf L570745_uv_first10.MS.tar.xz
+
 run: data/L591513_SB000_uv_delta_t_4.MS/ .virtualenv/bin/cwltool
 	.virtualenv/bin/cwltool \
 		--cachedir cache \
 		--outdir results \
 		prefactor.cwl \
-		job_multisub.cwl
-		#job.cwl
+		job.cwl
 
-toil: .virtualenv/bin/cwltoil
+toil: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltoil
 	.virtualenv/bin/cwltoil prefactor.cwl job_multisub.cwl
