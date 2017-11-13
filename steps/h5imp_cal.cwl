@@ -10,8 +10,8 @@ hints:
         RUN docker-apt-install prefactor
 
 inputs:
-  msin:
-    type: Directory
+  ms_array:
+    type: Directory[]
     doc: "Search pattern for measurement sets with instrument tables. (e.g. '/data/scratch/MyObs/calibrator/L*.dppp')"
     inputBinding:
       position: 1

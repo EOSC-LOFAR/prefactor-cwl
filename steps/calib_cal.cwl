@@ -70,7 +70,7 @@ arguments:
    prefix: --numthreads
 
 outputs:
-  msout:
+  mscalib:
     type: Directory
     outputBinding:
       glob: "$( inputs.observation.basename )"

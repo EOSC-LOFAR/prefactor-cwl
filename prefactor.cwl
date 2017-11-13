@@ -1,8 +1,12 @@
 cwlVersion: v1.0
 class: Workflow
 
+cwlVersion: v1.0
+requirements:
+  ScatterFeatureRequirement: {}
+
 inputs:
-  msin: Directory
+  ms_array: Directory[]
   calibration_parset: File
   n_channels: int
   reference_station: string
@@ -38,7 +42,8 @@ steps:
   ndppp_prep_cal:
     run: steps/ndppp_prep_cal.cwl
     in:
-      msin: msin
+      msin: ms_array
+    scatter: msin
     out:
         [msout]
 
@@ -46,6 +51,7 @@ steps:
     run: steps/sky_cal.cwl
     in:
       ms: ndppp_prep_cal/msout
+    scatter: ms
     out:
       [skymodel]
 
@@ -55,13 +61,17 @@ steps:
       observation: ndppp_prep_cal/msout
       parset: calibration_parset
       catalog: sky_cal/skymodel
+    scatter:
+      - observation
+      - catalog
+    scatterMethod: dotproduct
     out:
-      [msout]
+      [mscalib]
 
   h5imp_cal:
     run: steps/h5imp_cal.cwl
     in:
-      msin: calib_cal/msout
+      ms_array: calib_cal/mscalib
     out:
       [losoto_h5]
 
