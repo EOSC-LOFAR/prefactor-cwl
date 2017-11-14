@@ -33,10 +33,10 @@ baseCommand: [/usr/bin/calibrate-stand-alone]
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/lofar
+      dockerImageId: kernsuite/calib_cal
       dockerFile: |
         FROM kernsuite/base:3
-        RUN docker-apt-install lofar
+        RUN docker-apt-install prefactor lofar
 
 requirements:
   - class: InlineJavascriptRequirement
@@ -54,20 +54,17 @@ inputs:
     inputBinding:
       position: 1
 
-  parset:
-    type: File
-    inputBinding:
-      position: 2
-
   catalog:
     type: File
     inputBinding:
       position: 3
 
 arguments:
- #- valueFrom: $(runtime.cores)
- - valueFrom: "50"
+ - valueFrom: $(runtime.cores)
    prefix: --numthreads
+
+ - valueFrom: /usr/share/prefactor/parsets/calibcal.parset
+   position: 2
 
 outputs:
   mscalib:

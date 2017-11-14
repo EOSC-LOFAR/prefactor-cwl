@@ -1,0 +1,11 @@
+ms_array:
+  - class: Directory
+    path: ../data/L570745_SB000_uv_first10.MS/
+  - class: Directory
+    path: ../data/L570745_SB001_uv_first10.MS/
+
+n_channels: 2
+
+reference_station: CS001HBA0
+
+

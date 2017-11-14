@@ -1,4 +1,5 @@
 .PHONY: clean run
+SHELL=bash
 
 all: run
 
@@ -19,17 +20,26 @@ data/L591513_SB000_uv_delta_t_4.MS/:
 	cd data && tar Jxvf L591513_SB000_uv_delta_t_4.MS.tar.xz
 
 data/L570745_SB000_uv_first10.MS/:
+	git lfs fetch
+	git lfs checkout
 	cd data && tar Jxvf L570745_uv_first10.MS.tar.xz
 
 run: data/L591513_SB000_uv_delta_t_4.MS/ .virtualenv/bin/cwltool
+	$(eval RUN=runs/run_$(shell date --iso-8601=seconds --utc))
+	mkdir -p $(RUN)
+	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
+	cp jobs/job_1sb.yaml $(RUN)/job.yaml
 	.virtualenv/bin/cwltool \
 		--cachedir cache \
-		--outdir results \
+		--outdir $(RUN)/results \
 		prefactor.cwl \
-		job_multisub.cwl
+	    jobs/job_1sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
 toil: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltoil
-	.virtualenv/bin/cwltoil \
-		--workDir toilcache \
-		prefactor.cwl \
-		job_multisub.cwl
+	$(eval RUN=runs/run_$(shell date --iso-8601=seconds --utc))
+	mkdir -p $(RUN)
+	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
+	cp jobs/job_2sb.yaml $(RUN)/job.yaml
+	.virtualenv/bin/toil-cwl-runner --logFile $(RUN)/log \
+		--outdir $(RUN)/results --jobStore file:///$(CURDIR)/$(RUN)/jobStore \
+		prefactor.cwl jobs/job_2sb.yaml | tee $(RUN)/output

@@ -4,3 +4,4 @@ data/*.MS/
 cache/*
 results/*
 out_tmpdir*/
+runs/

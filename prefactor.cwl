@@ -7,7 +7,6 @@ requirements:
 
 inputs:
   ms_array: Directory[]
-  calibration_parset: File
   n_channels: int
   reference_station: string
 
@@ -59,7 +58,6 @@ steps:
     run: steps/calib_cal.cwl
     in:
       observation: ndppp_prep_cal/msout
-      parset: calibration_parset
       catalog: sky_cal/skymodel
     scatter:
       - observation
