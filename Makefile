@@ -26,7 +26,10 @@ run: data/L591513_SB000_uv_delta_t_4.MS/ .virtualenv/bin/cwltool
 		--cachedir cache \
 		--outdir results \
 		prefactor.cwl \
-		job.cwl
+		job_multisub.cwl
 
 toil: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltoil
-	.virtualenv/bin/cwltoil prefactor.cwl job_multisub.cwl
+	.virtualenv/bin/cwltoil \
+		--workDir toilcache \
+		prefactor.cwl \
+		job_multisub.cwl

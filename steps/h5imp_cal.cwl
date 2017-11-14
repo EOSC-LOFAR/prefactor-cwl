@@ -12,7 +12,7 @@ hints:
 inputs:
   ms_array:
     type: Directory[]
-    doc: "Search pattern for measurement sets with instrument tables. (e.g. '/data/scratch/MyObs/calibrator/L*.dppp')"
+    doc: "List of path patterns of measurement sets with instrument tables"
     inputBinding:
       position: 1
 
