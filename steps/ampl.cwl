@@ -17,8 +17,9 @@ inputs:
       position: 1
 
   n_chan:
-    type: int
+    type: int?
     doc: "number of channels solved for per subband (i.e., number of solutions along frequencies axis of MS)"
+    default: 4
     inputBinding:
       position: 3
 

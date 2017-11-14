@@ -7,8 +7,10 @@ requirements:
 
 inputs:
   ms_array: Directory[]
-  n_channels: int
   reference_station: string
+  avg.freqstep: int
+  avg.timestep: int
+  flag.baseline: string
 
 outputs:
   phase_xx_yy_offset:
@@ -36,12 +38,14 @@ outputs:
     outputSource: plot_cal_phases/polYY_dirpointing
 
 
-
 steps:
   ndppp_prep_cal:
     run: steps/ndppp_prep_cal.cwl
     in:
       msin: ms_array
+      avg.freqstep: avg.freqstep
+      avg.timestep: avg.timestep
+      flag.baseline: flag.baseline
     scatter: msin
     out:
         [msout]
@@ -85,7 +89,6 @@ steps:
 #  ampl:
 #    run: steps/ampl.cwl
 #    in:
-#      n_chan: n_channels
 #      globaldbname: h5imp_cal/losoto_h5
 #    out:
 #      [amplitude_array]
