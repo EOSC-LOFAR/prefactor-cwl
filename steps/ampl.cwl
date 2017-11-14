@@ -37,3 +37,13 @@ outputs:
     type: File
     outputBinding:
       glob: "fitclock_amplitude_array.npy"
+
+
+$namespaces:
+  s: http://schema.org/
+$schemas:
+- https://schema.org/docs/schema_org_rdfa.html
+
+s:license: "https://mit-license.org/"
+s:author:
+  s:person.url: "http://orcid.org/0000-0002-6136-3724"
