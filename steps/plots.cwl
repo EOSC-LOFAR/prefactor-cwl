@@ -22,10 +22,10 @@ inputs:
   amplitude_array:
     type: File
 
-  dclock_1st.sm:
+  dclock_1st_sm:
     type: File
 
-  dtec_1st.sm:
+  dtec_1st_sm:
     type: File
 
 outputs:
@@ -52,9 +52,9 @@ arguments:
       import numpy as np
       import pylab
 
-      amparray   = np.load("$(inputs.amplitude_array)")
-      clockarray = np.load("$(inputs.dclock_1st.sm)")
-      dtecarray  = np.load("$(inputs.dtec_1st.sm)")
+      amparray   = np.load("$(inputs.amplitude_array.path)")
+      clockarray = np.load("$(inputs.dclock_1st_sm.path)")
+      dtecarray  = np.load("$(inputs.dtec_1st_sm.path)")
       numants = len(dtecarray[0,:])
       
       for i in range(0,numants):

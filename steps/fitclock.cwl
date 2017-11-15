@@ -36,23 +36,22 @@ outputs:
     outputBinding:
       glob: fitted_data_dTEC_fitclock_1st.npy
         
-  dclock_1st.sm:
+  dclock_1st_sm:
     type: File
     outputBinding:
       glob: fitted_data_dclock_fitclock_1st.sm.npy
 
-  dTEC_1st.sm:
+  dTEC_1st_sm:
     type: File
     outputBinding:
       glob: fitted_data_dTEC_fitclock_1st.sm.npy
+
 
 
 $namespaces:
   s: http://schema.org/
 $schemas:
   - https://schema.org/docs/schema_org_rdfa.html
-
-
 
 s:license: "https://mit-license.org/"
 s:author:

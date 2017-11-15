@@ -37,18 +37,17 @@ outputs:
     type: File
     outputSource: plot_cal_phases/polYY_dirpointing
 
-
   dtec_allsols:
     type: File
-    outputSource: plot/dtec_allsols
+    outputSource: plots/dtec_allsols
 
   dclock_allsols:
     type: File
-    outputSource: plot/dclock_allsols
+    outputSource: plots/dclock_allsols
 
   amp_allsols:
     type: File
-    outputSource: plot/amp_allsols
+    outputSource: plots/amp_allsols
 
 steps:
   ndppp_prep_cal:
@@ -94,7 +93,7 @@ steps:
     in:
       globaldbname: h5imp_cal/losoto_h5
     out:
-      [dTEC_1st, dTEC_1st.sm, dclock_1st, dclock_1st.sm]
+      [dTEC_1st, dTEC_1st_sm, dclock_1st, dclock_1st_sm]
 
   ampl:
     run: steps/ampl.cwl
@@ -103,13 +102,13 @@ steps:
     out:
       [amplitude_array]
 
-  plot:
+  plots:
     run: steps/plots.cwl
     in:
       amplitude_array: ampl/amplitude_array
       dclock_1st: fitclock/dclock_1st
-      dclock_1st.sm: fitclock/dclock_1st.sm
-      dtec_1st.sm: fitclock/dTEC_1st.sm
+      dclock_1st_sm: fitclock/dclock_1st_sm
+      dtec_1st_sm: fitclock/dTEC_1st_sm
     out:
        [dtec_allsols, dclock_allsols, amp_allsols]
 

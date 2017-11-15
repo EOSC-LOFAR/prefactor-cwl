@@ -24,12 +24,12 @@ run: data/L591513_SB000_uv_delta_t_4.MS/ .virtualenv/bin/cwltool
 	$(eval RUN=runs/run_$(shell date --iso-8601=seconds --utc))
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
-	cp jobs/job_1sb.yaml $(RUN)/job.yaml
+	cp jobs/job_20sb.yaml $(RUN)/job.yaml
 	.virtualenv/bin/cwltool \
 		--cachedir cache \
 		--outdir $(RUN)/results \
 		prefactor.cwl \
-	    jobs/job_1sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
+	    jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
 toil: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltoil
 	$(eval RUN=runs/run_$(shell date +%F-%H-%M-%S))

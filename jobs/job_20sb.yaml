@@ -43,3 +43,6 @@ ms_array:
 reference_station: CS001HBA0
 
 
+avg.freqstep: 2
+avg.timestep: 2
+flag.baseline: "[ CS013HBA* ]"
