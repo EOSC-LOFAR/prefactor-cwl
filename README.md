@@ -5,6 +5,8 @@ https://github.com/lofar-astron/prefactor/
 
 [![Build Status](https://travis-ci.org/gijzelaerr/prefactor-cwl.svg?branch=master)](https://travis-ci.org/gijzelaerr/prefactor-cwl)
 
+To clone this repository you need to have [git-lfs](https://git-lfs.github.com/) installed.
+
 # requirements
 
 * [Docker](https://www.docker.com/)
