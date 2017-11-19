@@ -16,11 +16,9 @@ data/L591513_SB000_uv_delta_t_4.MS/:
 	cd data && tar Jxvf L591513_SB000_uv_delta_t_4.MS.tar.xz
 
 data/L570745_SB000_uv_first10.MS/:
-	git lfs fetch
-	git lfs checkout
 	cd data && tar Jxvf L570745_uv_first10.MS.tar.xz
 
-run: data/L591513_SB000_uv_delta_t_4.MS/ .virtualenv/bin/cwltool
+run: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltool
 	$(eval RUN=runs/run_$(shell date --iso-8601=seconds --utc))
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
