@@ -19,7 +19,7 @@ data/L570745_SB000_uv_first10.MS/:
 	cd data && tar Jxvf L570745_uv_first10.MS.tar.xz
 
 run: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltool
-	$(eval RUN=runs/run_$(shell date --iso-8601=seconds --utc))
+	$(eval RUN=runs/run_$(shell date +%F-%H-%M-%S))
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
 	cp jobs/job_20sb.yaml $(RUN)/job.yaml
@@ -32,9 +32,11 @@ run: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltool
 toil: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltoil
 	$(eval RUN=runs/run_$(shell date +%F-%H-%M-%S))
 	mkdir -p $(RUN)/results
-	mkdir -p $(RUN)/output
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
 	cp jobs/job_2sb.yaml $(RUN)/job.yaml
 	.virtualenv/bin/toil-cwl-runner --logFile $(RUN)/log \
 		--outdir $(RUN)/results --jobStore file:///$(CURDIR)/$(RUN)/jobStore \
 		prefactor.cwl jobs/job_2sb.yaml | tee $(RUN)/output
+
+docker:
+	docker build . -t kernsuite/prefactor
