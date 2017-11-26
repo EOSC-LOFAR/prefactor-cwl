@@ -4,6 +4,9 @@ ms_array:
   - class: Directory
     path: ../data/L570745_SB001_uv_first10.MS/
 
-reference_station: CS001HBA0
+avg.freqstep: 2 
+avg.timestep: 2
+flag.baseline: "[ CS013HBA* ]"
 
+reference_station: CS001HBA0
 
