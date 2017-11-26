@@ -33,10 +33,7 @@ baseCommand: [/usr/bin/calibrate-stand-alone]
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/calib_cal
-      dockerFile: |
-        FROM kernsuite/base:3
-        RUN docker-apt-install prefactor lofar
+      dockerImageId: kernsuite/prefactor
 
 requirements:
   - class: InlineJavascriptRequirement

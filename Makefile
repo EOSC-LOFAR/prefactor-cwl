@@ -24,6 +24,7 @@ run: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltool
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
 	cp jobs/job_20sb.yaml $(RUN)/job.yaml
 	.virtualenv/bin/cwltool \
+		--user-space-docker-cmd udocker \
 		--cachedir cache \
 		--outdir $(RUN)/results \
 		prefactor.cwl \
