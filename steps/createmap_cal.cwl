@@ -36,9 +36,6 @@ baseCommand: [python,
 hints:
   DockerRequirement:
       dockerImageId: kernsuite/prefactor
-      dockerFile: |
-        FROM kernsuite/base:3
-        RUN docker-apt-install prefactor
 
 inputs:
   number:

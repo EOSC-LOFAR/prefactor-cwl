@@ -6,9 +6,6 @@ baseCommand: python
 hints:
   DockerRequirement:
       dockerImageId: kernsuite/prefactor
-      dockerFile: |
-        FROM kernsuite/base:3
-        RUN docker-apt-install prefactor
 
 requirements:
   - class: InlineJavascriptRequirement
@@ -38,7 +35,8 @@ arguments:
       SkymodelCal = main(ms_input="$(inputs.ms.path)",
            DirSkymodelCal=DirSkymodelCal,
            extensionSky="$(inputs.extensionSky)",
-      )['SkymodelCal']
+      )["SkymodelCal"]
+      print("SkymodelCal: {}".format(SkymodelCal))
       copyfile(path.join(DirSkymodelCal, SkymodelCal), "selected.skymodel")
 
 outputs:

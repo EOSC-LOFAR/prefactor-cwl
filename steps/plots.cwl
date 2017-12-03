@@ -14,9 +14,6 @@ baseCommand: python
 hints:
   DockerRequirement:
       dockerImageId: kernsuite/prefactor
-      dockerFile: |
-        FROM kernsuite/base:3
-        RUN docker-apt-install prefactor
 
 inputs:
   amplitude_array:
@@ -48,7 +45,7 @@ arguments:
   - prefix: -c
     valueFrom: |
       import matplotlib as mpl
-      mpl.use('Agg')
+      mpl.use("Agg")
       import numpy as np
       import pylab
 
@@ -59,17 +56,17 @@ arguments:
       
       for i in range(0,numants):
           pylab.plot(dtecarray[:,i])
-      pylab.xlabel('Time')
-      pylab.ylabel('dTEC [$10^{16}$ m$^{-2}$]')
-      pylab.savefig('dtec_allsols.png')
+      pylab.xlabel("Time")
+      pylab.ylabel("dTEC [$10^{16}$ m$^{-2}$]")
+      pylab.savefig("dtec_allsols.png")
       pylab.close()
       pylab.cla()
       
       for i in range(0,numants):
           pylab.plot(1e9*clockarray[:,i])
-      pylab.xlabel('Time')
-      pylab.ylabel('dClock [ns]')
-      pylab.savefig('dclock_allsols.png')
+      pylab.xlabel("Time")
+      pylab.ylabel("dClock [ns]")
+      pylab.savefig("dclock_allsols.png")
       pylab.close()
       pylab.cla()
       
@@ -77,10 +74,10 @@ arguments:
       for i in range(0,numants):
         pylab.plot(np.median(amparray[i,:,:,0], axis=0))
         pylab.plot(np.median(amparray[i,:,:,1], axis=0))
-      pylab.xlabel('Subband number')
-      pylab.ylabel('Amplitude')
+      pylab.xlabel("Subband number")
+      pylab.ylabel("Amplitude")
       pylab.ylim(0,2.*np.median(amparray))
-      pylab.savefig('amp_allsols.png')
+      pylab.savefig("amp_allsols.png")
       pylab.close()
       pylab.cla()
       
