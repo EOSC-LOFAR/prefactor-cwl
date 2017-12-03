@@ -1,12 +1,13 @@
 .PHONY: clean run
+all: run
 SHELL=bash
-ARCHIVE=ftp://ftp.astron.nl/outgoing/EOSC/datasets/
+RUN := runs/run_$(shell date +%F-%H-%M-%S)
 
+ARCHIVE=ftp://ftp.astron.nl/outgoing/EOSC/datasets/
 TINY=L591513_SB000_uv_delta_t_4.MS
 PULSAR=GBT_Lband_PSR.fil
 SMALL=L570745_SB000_uv_first10.MS
 
-all: run
 
 .virtualenv/:
 	virtualenv -p python2 .virtualenv
@@ -17,6 +18,11 @@ all: run
 .virtualenv/bin/cwltoil: .virtualenv/
 	.virtualenv/bin/pip install -r requirements.txt
 
+.virtualenv/bin/udocker: .virtualenv/
+	curl https://raw.githubusercontent.com/indigo-dc/udocker/master/udocker.py > .virtualenv/bin/udocker
+	chmod u+rx .virtualenv/bin/udocker
+	.virtualenv/bin/udocker install
+
 data/$(PULSAR):
 	cd data && wget $(ARCHIVE)$(PULSAR)
 
@@ -26,8 +32,18 @@ data/$(TINY)/:
 data/$(SMALL)/:
 	cd data && wget $(ARCHIVE)$(SMALL).tar.xz && tar Jxvf $(SMALL).tar.xz
 
+run-udocker: .virtualenv/bin/udocker
+	mkdir -p $(RUN)
+	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
+	cp jobs/job_20sb.yaml $(RUN)/job.yaml
+	.virtualenv/bin/cwltool \
+		--user-space-docker-cmd `pwd`/.virtualenv/bin/udocker \
+		--cachedir cache \
+		--outdir $(RUN)/results \
+		prefactor.cwl \
+		jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
+
 run: data/$(SMALL)/ .virtualenv/bin/cwltool
-	$(eval RUN=runs/run_$(shell date +%F-%H-%M-%S))
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
 	cp jobs/job_20sb.yaml $(RUN)/job.yaml
@@ -35,10 +51,9 @@ run: data/$(SMALL)/ .virtualenv/bin/cwltool
 		--cachedir cache \
 		--outdir $(RUN)/results \
 		prefactor.cwl \
-	    jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
+		jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
 toil: data/$(SMALL)/ .virtualenv/bin/cwltoil
-	$(eval RUN=runs/run_$(shell date +%F-%H-%M-%S))
 	mkdir -p $(RUN)/results
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
 	cp jobs/job_20sb.yaml $(RUN)/job.yaml
