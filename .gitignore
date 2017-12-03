@@ -1,6 +1,6 @@
 .virtualenv/
 *.swp
-data/*.MS/
+data/*
 cache/*
 results/*
 out_tmpdir*/
