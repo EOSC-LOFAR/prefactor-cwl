@@ -50,6 +50,7 @@ run: data/$(SMALL)/ .virtualenv/bin/cwltool
 	.virtualenv/bin/cwltool \
 		--cachedir cache \
 		--outdir $(RUN)/results \
+		--tmpdir-prefix `pwd`/tmp/ \
 		prefactor.cwl \
 		jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
@@ -57,9 +58,12 @@ toil: data/$(SMALL)/ .virtualenv/bin/cwltoil
 	mkdir -p $(RUN)/results
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
 	cp jobs/job_20sb.yaml $(RUN)/job.yaml
-	.virtualenv/bin/toil-cwl-runner --logFile $(RUN)/log \
-		--outdir $(RUN)/results --jobStore file:///$(CURDIR)/$(RUN)/jobStore \
-		prefactor.cwl jobs/job_2sb.yaml | tee $(RUN)/output
+	.virtualenv/bin/toil-cwl-runner \
+		--logFile $(RUN)/log \
+		--outdir $(RUN)/results \
+		--jobStore file:///$(CURDIR)/$(RUN)/jobStore \
+		prefactor.cwl \
+		jobs/job_2sb.yaml | tee $(RUN)/output
 
 docker:
 	docker build . -t kernsuite/prefactor
