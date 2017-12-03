@@ -5,9 +5,6 @@ baseCommand: [python, /usr/lib/prefactor/scripts/fit_clocktec_initialguess_losot
 hints:
   DockerRequirement:
       dockerImageId: kernsuite/prefactor
-      dockerFile: |
-        FROM kernsuite/base:3
-        RUN docker-apt-install prefactor
 
 inputs:
   globaldbname:

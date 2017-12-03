@@ -5,9 +5,6 @@ baseCommand: [python, /usr/lib/prefactor/scripts/losotoImporter.py, losoto.h5]
 hints:
   DockerRequirement:
       dockerImageId: kernsuite/prefactor
-      dockerFile: |
-        FROM kernsuite/base:3
-        RUN docker-apt-install prefactor
 
 inputs:
   ms_array:

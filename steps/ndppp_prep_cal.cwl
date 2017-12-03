@@ -24,10 +24,7 @@ baseCommand: [NDPPP, msout=calibrated.MS]
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/lofar
-      dockerFile: |
-        FROM kernsuite/base:3
-        RUN docker-apt-install lofar
+      dockerImageId: kernsuite/prefactor
 
 inputs:
   msin:
