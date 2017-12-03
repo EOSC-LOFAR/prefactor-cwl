@@ -1,5 +1,10 @@
 .PHONY: clean run
 SHELL=bash
+ARCHIVE=ftp://ftp.astron.nl/outgoing/EOSC/datasets/
+
+TINY=L591513_SB000_uv_delta_t_4.MS
+PULSAR=GBT_Lband_PSR.fil
+SMALL=L570745_SB000_uv_first10.MS
 
 all: run
 
@@ -12,13 +17,16 @@ all: run
 .virtualenv/bin/cwltoil: .virtualenv/
 	.virtualenv/bin/pip install -r requirements.txt
 
-data/L591513_SB000_uv_delta_t_4.MS/:
-	cd data && tar Jxvf L591513_SB000_uv_delta_t_4.MS.tar.xz
+data/$(PULSAR):
+	cd data && wget $(ARCHIVE)$(PULSAR)
 
-data/L570745_SB000_uv_first10.MS/:
-	cd data && tar Jxvf L570745_uv_first10.MS.tar.xz
+data/$(TINY)/:
+	cd data && wget $(ARCHIVE)$(TINY).tar.xz && tar Jxvf $(TINY).tar.xz
 
-run: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltool
+data/$(SMALL)/:
+	cd data && wget $(ARCHIVE)$(SMALL).tar.xz && tar Jxvf $(SMALL).tar.xz
+
+run: data/$(SMALL)/ .virtualenv/bin/cwltool
 	$(eval RUN=runs/run_$(shell date --iso-8601=seconds --utc))
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
@@ -29,11 +37,11 @@ run: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltool
 		prefactor.cwl \
 	    jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
-toil: data/L570745_SB000_uv_first10.MS/ .virtualenv/bin/cwltoil
+toil: data/$(SMALL)/ .virtualenv/bin/cwltoil
 	$(eval RUN=runs/run_$(shell date +%F-%H-%M-%S))
 	mkdir -p $(RUN)/results
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
-	cp jobs/job_2sb.yaml $(RUN)/job.yaml
+	cp jobs/job_20sb.yaml $(RUN)/job.yaml
 	.virtualenv/bin/toil-cwl-runner --logFile $(RUN)/log \
 		--outdir $(RUN)/results --jobStore file:///$(CURDIR)/$(RUN)/jobStore \
 		prefactor.cwl jobs/job_2sb.yaml | tee $(RUN)/output
