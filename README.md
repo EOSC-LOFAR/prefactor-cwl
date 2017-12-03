@@ -19,6 +19,21 @@ To run the pipeline with the example dataset just run:
 $ make run
 ```
 
+To Run using a udocker (user space docker run:
+``` bash
+$ make run-udocker
+```
+
+To try out toil as a schedular run:
+```bash
+$ make toil
+```
+
+If you are on cartesius, you first need to activate a python environment:
+```bash
+$ module load python
+```
+
 # steps
 
 the pipeline consists of these steps:
