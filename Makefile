@@ -67,3 +67,6 @@ toil: data/$(SMALL)/ .virtualenv/bin/cwltoil
 
 docker:
 	docker build . -t kernsuite/prefactor
+
+prefactor.simg:
+	singularity build prefactor.simg docker://kernsuite/prefactor
