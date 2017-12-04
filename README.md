@@ -3,7 +3,7 @@ CWL version of prefactor
 
 https://github.com/lofar-astron/prefactor/
 
-[![Build Status](https://travis-ci.org/gijzelaerr/prefactor-cwl.svg?branch=master)](https://travis-ci.org/gijzelaerr/prefactor-cwl)
+[![Build Status](https://travis-ci.org/EOSC-LOFAR/prefactor-cwl.svg?branch=master)](https://travis-ci.org/EOSC-LOFAR/prefactor-cwl)
 
 To clone this repository you need to have [git-lfs](https://git-lfs.github.com/) installed.
 
@@ -52,6 +52,8 @@ $ spack load node-js
 ```
 
 # steps
+
+[![graph](https://raw.githubusercontent.com/EOSC-LOFAR/prefactor-cwl/master/prefactor.png)](https://view.commonwl.org/workflows/github.com/EOSC-LOFAR/prefactor-cwl/blob/master/prefactor.cwl)
 
 the pipeline consists of these steps:
 
