@@ -5,3 +5,5 @@ cache/*
 results/*
 out_tmpdir*/
 runs/
+*.simg
+slurm-*.out

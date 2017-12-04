@@ -70,3 +70,15 @@ docker:
 
 prefactor.simg:
 	singularity build prefactor.simg docker://kernsuite/prefactor
+
+singularity: prefactor.simg
+	mkdir -p $(RUN)/results
+	singularity exec prefactor.simg cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
+	singularity exec prefactor.simg  \
+	        cwltool \
+		--no-container \
+                --cachedir cache \
+                --outdir $(RUN)/results \
+                --tmpdir-prefix `pwd`/tmp/ \
+                prefactor.cwl \
+                jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
