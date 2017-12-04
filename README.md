@@ -29,9 +29,26 @@ To try out toil as a schedular run:
 $ make toil
 ```
 
+## HPC cloud
+
+We've made a set of ansbile scripts to automate the deployment of a cluster
+that can run CWL pipelines: https://github.com/EOSC-LOFAR/ansible
+
+## on Cartesius
+
 If you are on cartesius, you first need to activate a python environment:
 ```bash
 $ module load python
+```
+
+If you want to use the CWL reference runner, you also need node-js. An easy
+way to set this up is using [spack](https://github.com/spack/spack).
+
+```bash
+$ git clone https://github.com/spack/spack
+$ spack/share/spack/setup-env.sh
+$ spack install node-js
+$ spack load node-js
 ```
 
 # steps
