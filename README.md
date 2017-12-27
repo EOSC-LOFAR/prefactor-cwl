@@ -5,21 +5,42 @@ https://github.com/lofar-astron/prefactor/
 
 [![Build Status](https://travis-ci.org/EOSC-LOFAR/prefactor-cwl.svg?branch=master)](https://travis-ci.org/EOSC-LOFAR/prefactor-cwl)
 
-To clone this repository you need to have [git-lfs](https://git-lfs.github.com/) installed.
+Note that this project is still very much in alpha stage and very much in flux.
+It is a prototype implementation and is not intended for end user audience.
+The goal is to demonstrate various technologies and how they could assist
+simplifying construction and deployment of big scale data reduction pipelines.
 
 # requirements
 
 * [Docker](https://www.docker.com/)
-* A [CWL](http://www.commonwl.org/) runner (like [CWLtool](https://github.com/common-workflow-language/cwltool))
-# usage
+* [Singularity](http://singularity.lbl.gov/)
+* [CWLtool](https://github.com/common-workflow-language/cwltool)
+* [Toil](https://github.com/BD2KGenomics/toil)
+* [Python Virtualenv](https://virtualenv.pypa.io/en/stable/)
 
+
+# preperations
+
+You first need to preprocess the CWL files since the standard
+doesn't support Singularity yet. If you want to use singularity run:
+
+```bash
+$ make singularity
+```
+
+otherwise run:
+```bash
+$ make no-singularity
+```
+
+# usage
 
 To run the pipeline with the example dataset just run:
 ```bash
 $ make run
 ```
 
-To Run using a udocker (user space docker run:
+To Run using a udocker (user space docker) run:
 ``` bash
 $ make run-udocker
 ```
@@ -49,6 +70,16 @@ $ git clone https://github.com/spack/spack
 $ spack/share/spack/setup-env.sh
 $ spack install node-js
 $ spack load node-js
+```
+
+Since all jobs are quite small, it is better to use the staging partition.
+You can configure toil to use the staging partition with:
+```bash
+$ export TOIL_SLURM_ARGS="-t 0:30:00 -p staging"
+```
+
+```bash
+$ make slurm
 ```
 
 # steps

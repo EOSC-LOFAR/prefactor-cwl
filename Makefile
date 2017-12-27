@@ -1,7 +1,7 @@
 .PHONY: clean run
 all: run
 SHELL=bash
-RUN := runs/run_$(shell date +%F-%H-%M-%S)
+RUN := $(PWD)/runs/run_$(shell date +%F-%H-%M-%S)
 SINGULARITY_PREFIX=$(shell echo "singularity, exec, $(PWD)/prefactor.simg, " | sed -e 's/[\/&]/\\&/g')
 ARCHIVE=ftp://ftp.astron.nl/outgoing/EOSC/datasets/
 TINY=L591513_SB000_uv_delta_t_4.MS
@@ -34,8 +34,6 @@ data/$(SMALL)/:
 
 run-udocker: .virtualenv/bin/udocker steps/ndppp_prep_cal.cwl
 	mkdir -p $(RUN)
-	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
-	cp jobs/job_20sb.yaml $(RUN)/job.yaml
 	.virtualenv/bin/cwltool \
 		--user-space-docker-cmd `pwd`/.virtualenv/bin/udocker \
 		--cachedir cache \
@@ -45,23 +43,31 @@ run-udocker: .virtualenv/bin/udocker steps/ndppp_prep_cal.cwl
 
 run: data/$(SMALL)/ .virtualenv/bin/cwltool steps/ndppp_prep_cal.cwl
 	mkdir -p $(RUN)
-	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
-	cp jobs/job_2sb.yaml $(RUN)/job.yaml
 	.virtualenv/bin/cwltool \
+		--leave-tmpdir \
 		--cachedir cache \
 		--outdir $(RUN)/results \
-		--tmpdir-prefix `pwd`/tmp/ \
 		prefactor.cwl \
 		jobs/job_2sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
 toil: data/$(SMALL)/ .virtualenv/bin/cwltoil steps/ndppp_prep_cal.cwl
 	mkdir -p $(RUN)/results
-	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
-	cp jobs/job_20sb.yaml $(RUN)/job.yaml
 	.virtualenv/bin/toil-cwl-runner \
 		--logFile $(RUN)/log \
 		--outdir $(RUN)/results \
-		--jobStore file:///$(CURDIR)/$(RUN)/jobStore \
+		--jobStore file://$(RUN)/job_store \
+		prefactor.cwl \
+		jobs/job_20sb.yaml | tee $(RUN)/output
+
+slurm: data/$(SMALL) .virtualenv/bin/cwltoil singularity
+	mkdir -p $(RUN)/results
+	#--batchSystem=slurm 
+	.virtualenv/bin/toil-cwl-runner \
+		--preserve-environment PATH \
+		--no-container \
+		--logFile $(RUN)/log \
+		--outdir $(RUN)/results \
+		--jobStore file://$(RUN)/job_store \
 		prefactor.cwl \
 		jobs/job_20sb.yaml | tee $(RUN)/output
 

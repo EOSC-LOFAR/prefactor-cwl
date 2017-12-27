@@ -7,3 +7,4 @@ out_tmpdir*/
 runs/
 *.simg
 slurm-*.out
+steps/*.cwl
