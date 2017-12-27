@@ -46,13 +46,13 @@ run-udocker: .virtualenv/bin/udocker
 run: data/$(SMALL)/ .virtualenv/bin/cwltool
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
-	cp jobs/job_20sb.yaml $(RUN)/job.yaml
+	cp jobs/job_2sb.yaml $(RUN)/job.yaml
 	.virtualenv/bin/cwltool \
 		--cachedir cache \
 		--outdir $(RUN)/results \
 		--tmpdir-prefix `pwd`/tmp/ \
 		prefactor.cwl \
-		jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
+		jobs/job_2sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
 toil: data/$(SMALL)/ .virtualenv/bin/cwltoil
 	mkdir -p $(RUN)/results
@@ -63,7 +63,7 @@ toil: data/$(SMALL)/ .virtualenv/bin/cwltoil
 		--outdir $(RUN)/results \
 		--jobStore file:///$(CURDIR)/$(RUN)/jobStore \
 		prefactor.cwl \
-		jobs/job_2sb.yaml | tee $(RUN)/output
+		jobs/job_20sb.yaml | tee $(RUN)/output
 
 docker:
 	docker build . -t kernsuite/prefactor
