@@ -61,8 +61,8 @@ toil: data/$(SMALL)/ .virtualenv/bin/cwltoil steps/ndppp_prep_cal.cwl
 
 slurm: data/$(SMALL) .virtualenv/bin/cwltoil singularity
 	mkdir -p $(RUN)/results
-	#--batchSystem=slurm 
 	.virtualenv/bin/toil-cwl-runner \
+		--batchSystem=slurm  \
 		--preserve-environment PATH \
 		--no-container \
 		--logFile $(RUN)/log \
