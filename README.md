@@ -12,11 +12,13 @@ simplifying construction and deployment of big scale data reduction pipelines.
 
 # requirements
 
+* [Python Virtualenv](https://virtualenv.pypa.io/en/stable/)
+* [Node JS](https://nodejs.org/en/)
+
+optional:
+* [Slum](https://slurm.schedmd.com/)
 * [Docker](https://www.docker.com/)
 * [Singularity](http://singularity.lbl.gov/)
-* [CWLtool](https://github.com/common-workflow-language/cwltool)
-* [Toil](https://github.com/BD2KGenomics/toil)
-* [Python Virtualenv](https://virtualenv.pypa.io/en/stable/)
 
 
 # preperations
