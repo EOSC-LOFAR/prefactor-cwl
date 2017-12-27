@@ -1,6 +1,6 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: [python, /usr/lib/prefactor/scripts/amplitudes_losoto_3.py]
+baseCommand: [CMD_PREFIXpython, /usr/lib/prefactor/scripts/amplitudes_losoto_3.py]
 
 hints:
   DockerRequirement:

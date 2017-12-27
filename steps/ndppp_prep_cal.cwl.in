@@ -20,7 +20,7 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: [NDPPP, msout=calibrated.MS]
+baseCommand: [CMD_PREFIXNDPPP, msout=calibrated.MS]
 
 hints:
   DockerRequirement:

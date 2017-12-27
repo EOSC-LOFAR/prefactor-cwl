@@ -2,7 +2,7 @@
 all: run
 SHELL=bash
 RUN := runs/run_$(shell date +%F-%H-%M-%S)
-
+SINGULARITY_PREFIX=$(shell echo "singularity, exec, $(PWD)/prefactor.simg, " | sed -e 's/[\/&]/\\&/g')
 ARCHIVE=ftp://ftp.astron.nl/outgoing/EOSC/datasets/
 TINY=L591513_SB000_uv_delta_t_4.MS
 PULSAR=GBT_Lband_PSR.fil
@@ -32,7 +32,7 @@ data/$(TINY)/:
 data/$(SMALL)/:
 	cd data && wget $(ARCHIVE)$(SMALL).tar.xz && tar Jxvf $(SMALL).tar.xz
 
-run-udocker: .virtualenv/bin/udocker
+run-udocker: .virtualenv/bin/udocker steps/ndppp_prep_cal.cwl
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
 	cp jobs/job_20sb.yaml $(RUN)/job.yaml
@@ -43,7 +43,7 @@ run-udocker: .virtualenv/bin/udocker
 		prefactor.cwl \
 		jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
-run: data/$(SMALL)/ .virtualenv/bin/cwltool
+run: data/$(SMALL)/ .virtualenv/bin/cwltool steps/ndppp_prep_cal.cwl
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
 	cp jobs/job_2sb.yaml $(RUN)/job.yaml
@@ -54,7 +54,7 @@ run: data/$(SMALL)/ .virtualenv/bin/cwltool
 		prefactor.cwl \
 		jobs/job_2sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
-toil: data/$(SMALL)/ .virtualenv/bin/cwltoil
+toil: data/$(SMALL)/ .virtualenv/bin/cwltoil steps/ndppp_prep_cal.cwl
 	mkdir -p $(RUN)/results
 	.virtualenv/bin/cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
 	cp jobs/job_20sb.yaml $(RUN)/job.yaml
@@ -72,13 +72,11 @@ prefactor.simg:
 	singularity build prefactor.simg docker://kernsuite/prefactor
 
 singularity: prefactor.simg
-	mkdir -p $(RUN)/results
-	singularity exec prefactor.simg cwltool --pack prefactor.cwl > $(RUN)/packed.cwl
-	singularity exec prefactor.simg  \
-	        cwltool \
-		--no-container \
-                --cachedir cache \
-                --outdir $(RUN)/results \
-                --tmpdir-prefix `pwd`/tmp/ \
-                prefactor.cwl \
-                jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
+	for i in `ls steps/*.in`; do sed 's/CMD_PREFIX/$(SINGULARITY_PREFIX)/g' $$i> $${i:0:-3}; done
+
+no-singularity:
+	for i in `ls steps/*.in`; do sed 's/CMD_PREFIX//g' $$i> $${i:0:-3}; done
+
+steps/ndppp_prep_cal.cwl:
+	$(error "Run '$ make singularity' or '$ make no-singularity' first")
+

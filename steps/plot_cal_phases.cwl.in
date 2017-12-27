@@ -20,7 +20,7 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-baseCommand: losoto
+baseCommand: [CMD_PREFIXlosoto]
 
 hints:
   DockerRequirement:
