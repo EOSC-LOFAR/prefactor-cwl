@@ -38,7 +38,7 @@ tiny: data/$(TINY)/
 data/$(SMALL_ARCHIVE): 
 	cd data && wget $(ARCHIVE)$(SMALL_ARCHIVE)
 
-data/$(SMALL)/:
+data/$(SMALL)/: data/$(SMALL_ARCHIVE)
 	cd data && tar Jxvf $(SMALL_ARCHIVE)
 
 small: data/$(SMALL)/
