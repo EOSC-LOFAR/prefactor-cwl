@@ -7,6 +7,7 @@ ARCHIVE=ftp://ftp.astron.nl/outgoing/EOSC/datasets/
 TINY=L591513_SB000_uv_delta_t_4.MS
 PULSAR=GBT_Lband_PSR.fil
 SMALL=L570745_SB000_uv_first10.MS
+SMALL_ARCHIVE=L570745_uv_first10.MS.tar.xz
 
 
 .virtualenv/:
@@ -29,8 +30,11 @@ data/$(PULSAR):
 data/$(TINY)/:
 	cd data && wget $(ARCHIVE)$(TINY).tar.xz && tar Jxvf $(TINY).tar.xz
 
+tiny: data/$(TINY)/
+	echo "data/$(TINY)/ is downloaded"
+
 data/$(SMALL)/:
-	cd data && wget $(ARCHIVE)$(SMALL).tar.xz && tar Jxvf $(SMALL).tar.xz
+	cd data && wget $(ARCHIVE)$(SMALL_ARCHIVE) && tar Jxvf $(SMALL_ARCHIVE).tar.xz
 
 small: data/$(SMALL)/
 	echo "data/$(SMALL)/ is downloaded"
