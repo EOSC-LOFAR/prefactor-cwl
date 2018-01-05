@@ -1,4 +1,4 @@
-.PHONY: clean run
+.PHONY: clean run small
 all: run
 SHELL=bash
 RUN := $(PWD)/runs/run_$(shell date +%F-%H-%M-%S)
@@ -32,6 +32,9 @@ data/$(TINY)/:
 data/$(SMALL)/:
 	cd data && wget $(ARCHIVE)$(SMALL).tar.xz && tar Jxvf $(SMALL).tar.xz
 
+small: data/$(SMALL)/
+	echo "data/$(SMALL)/ is downloaded"
+
 run-udocker: .virtualenv/bin/udocker steps/ndppp_prep_cal.cwl
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool \
@@ -63,6 +66,21 @@ slurm: data/$(SMALL) .virtualenv/bin/cwltoil singularity
 	mkdir -p $(RUN)/results
 	.virtualenv/bin/toil-cwl-runner \
 		--batchSystem=slurm  \
+		--preserve-environment PATH \
+		--no-container \
+		--logFile $(RUN)/log \
+		--outdir $(RUN)/results \
+		--jobStore file://$(RUN)/job_store \
+		prefactor.cwl \
+		jobs/job_20sb.yaml | tee $(RUN)/output
+
+
+mesos: data/$(SMALL) .virtualenv/bin/cwltoil
+	mkdir -p $(RUN)/results
+	.virtualenv/bin/toil-cwl-runner \
+		--batchSystem=slurm  \
+		--batchSystem mesos \
+        --mesosMaster 127.0.0.1:5050 \
 		--preserve-environment PATH \
 		--no-container \
 		--logFile $(RUN)/log \
