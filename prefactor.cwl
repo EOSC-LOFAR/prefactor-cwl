@@ -13,6 +13,42 @@ inputs:
   flag.baseline: string
 
 outputs:
+  losoto_h5:
+    type: File
+    outputSource: h5imp_cal/losoto_h5
+
+  dTEC_1st:
+    type: File
+    outputSource: fitclock/dTEC_1st
+
+  dTEC_1st_sm:
+    type: File
+    outputSource: fitclock/dTEC_1st_sm
+
+  dclock_1st:
+    type: File
+    outputSource: fitclock/dclock_1st
+
+  dclock_1st_sm:
+    type: File
+    outputSource: fitclock/dclock_1st_sm
+
+  amplitude_array:
+    type: File
+    outputSource: ampl/amplitude_array
+
+  dtec_allsols:
+    type: File
+    outputSource: plots/dtec_allsols
+
+  dclock_allsols:
+    type: File
+    outputSource: plots/dclock_allsols
+
+  amp_allsols:
+    type: File
+    outputSource: plots/amp_allsols
+
   phase_xx_yy_offset:
     type: File
     outputSource: phase/phase_xx_yy_offset
@@ -37,17 +73,7 @@ outputs:
     type: File
     outputSource: plot_cal_phases/polYY_dirpointing
 
-  dtec_allsols:
-    type: File
-    outputSource: plots/dtec_allsols
 
-  dclock_allsols:
-    type: File
-    outputSource: plots/dclock_allsols
-
-  amp_allsols:
-    type: File
-    outputSource: plots/amp_allsols
 
 steps:
   ndppp_prep_cal:
