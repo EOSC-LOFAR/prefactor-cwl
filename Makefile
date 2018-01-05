@@ -7,7 +7,9 @@ ARCHIVE=ftp://ftp.astron.nl/outgoing/EOSC/datasets/
 TINY=L591513_SB000_uv_delta_t_4.MS
 PULSAR=GBT_Lband_PSR.fil
 SMALL=L570745_SB000_uv_first10.MS
-SMALL_ARCHIVE=L570745_uv_first10.MS.tar.xz
+
+# archive name is different from file name
+SMALL_ARCHIVE=L570745_uv_first10.MS
 
 
 .virtualenv/:
