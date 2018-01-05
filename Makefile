@@ -9,7 +9,7 @@ PULSAR=GBT_Lband_PSR.fil
 SMALL=L570745_SB000_uv_first10.MS
 
 # archive name is different from file name
-SMALL_ARCHIVE=L570745_uv_first10.MS
+SMALL_ARCHIVE=L570745_uv_first10.MS.tar.xz
 
 
 .virtualenv/:
@@ -35,8 +35,11 @@ data/$(TINY)/:
 tiny: data/$(TINY)/
 	echo "data/$(TINY)/ is downloaded"
 
+data/$(SMALL_ARCHIVE): 
+	cd data && wget $(ARCHIVE)$(SMALL_ARCHIVE)
+
 data/$(SMALL)/:
-	cd data && wget $(ARCHIVE)$(SMALL_ARCHIVE) && tar Jxvf $(SMALL_ARCHIVE).tar.xz
+	cd data && tar Jxvf $(SMALL_ARCHIVE)
 
 small: data/$(SMALL)/
 	echo "data/$(SMALL)/ is downloaded"
