@@ -44,7 +44,7 @@ data/$(SMALL)/: data/$(SMALL_ARCHIVE)
 small: data/$(SMALL)/
 	echo "data/$(SMALL)/ is downloaded"
 
-run-udocker: .virtualenv/bin/udocker steps/ndppp_prep_cal.cwl
+run-udocker: .virtualenv/bin/udocker steps/ndppp_prep_cal.cwl .virtualenv/bin/cwltool
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool \
 		--user-space-docker-cmd `pwd`/.virtualenv/bin/udocker \
