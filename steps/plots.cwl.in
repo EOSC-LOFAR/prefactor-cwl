@@ -11,6 +11,8 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: [CMD_PREFIXpython]
 
+label: "Plot clock, TEC, amplitude"
+
 hints:
   DockerRequirement:
       dockerImageId: kernsuite/prefactor
