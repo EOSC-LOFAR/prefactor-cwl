@@ -10,3 +10,6 @@ before_script:
 - true
 script:
 - true
+branches:
+  only:
+    - master
