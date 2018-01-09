@@ -13,7 +13,6 @@ simplifying construction and deployment of big scale data reduction pipelines.
 # requirements
 
 * [Python Virtualenv](https://virtualenv.pypa.io/en/stable/)
-* [Node JS](https://nodejs.org/en/)
 
 optional:
 * [Slum](https://slurm.schedmd.com/)
@@ -62,16 +61,6 @@ that can run CWL pipelines: https://github.com/EOSC-LOFAR/ansible
 If you are on cartesius, you first need to activate a python environment:
 ```bash
 $ module load python
-```
-
-If you want to use the CWL reference runner, you also need node-js. An easy
-way to set this up is using [spack](https://github.com/spack/spack).
-
-```bash
-$ git clone https://github.com/spack/spack
-$ spack/share/spack/setup-env.sh
-$ spack install node-js
-$ spack load node-js
 ```
 
 Since all jobs are quite small, it is better to use the staging partition.

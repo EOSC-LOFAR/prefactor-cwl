@@ -10,7 +10,6 @@ hints:
       dockerImageId: kernsuite/prefactor
 
 requirements:
-  - class: InlineJavascriptRequirement
   - class: EnvVarRequirement
     envDef:
       PYTHONPATH: /usr/lib/prefactor/scripts/

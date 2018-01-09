@@ -1,12 +1,16 @@
 language: c
 sudo: required
 services:
-- docker
+  - docker
 before_install:
-- true
+  - true
 install:
-- docker build -t prefactor .
+  - docker build -t prefactor .
+  - make no-singularity
 before_script:
-- true
+  - git clone https://github.com/common-workflow-language/schema_salad.git salad && cd ./salad && pip install . --user && cd ..
 script:
-- true
+  - for target in *.cwl steps/*.cwl; do schema-salad-tool ./salad/schema_salad/tests/test_schema/CommonWorkflowLanguage.yml ${target} || exit 1; done
+branches:
+  only:
+    - master
