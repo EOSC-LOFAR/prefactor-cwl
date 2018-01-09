@@ -54,6 +54,7 @@ requirements:
 inputs:
   h5parm:
     type: File
+    format: h5parm
     inputBinding:
       position: 1
 

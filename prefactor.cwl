@@ -15,62 +15,86 @@ inputs:
 outputs:
   losoto_h5:
     type: File
+    format: h5parm
+    label: "H5Parm solutions"
     outputSource: h5imp_cal/losoto_h5
 
   dTEC_1st:
     type: File
+    format: numpy
+    label: "TEC solutions"
     outputSource: fitclock/dTEC_1st
 
   dTEC_1st_sm:
     type: File
+    format: numpy
+    label: "Smoothed TEC solutions"
     outputSource: fitclock/dTEC_1st_sm
 
   dclock_1st:
     type: File
+    format: numpy
+    label: "Clock solutions"
     outputSource: fitclock/dclock_1st
 
   dclock_1st_sm:
     type: File
+    format: numpy
+    label: "Smoothed clock solutions"
     outputSource: fitclock/dclock_1st_sm
 
   amplitude_array:
     type: File
+    format: numpy
+    label: "Amplitude solutions"
     outputSource: ampl/amplitude_array
 
   dtec_allsols:
     type: File
+    format: image/png
     outputSource: plots/dtec_allsols
 
   dclock_allsols:
     type: File
+    format: image/png
     outputSource: plots/dclock_allsols
 
   amp_allsols:
     type: File
+    format: image/png
     outputSource: plots/amp_allsols
 
   phase_xx_yy_offset:
     type: File
+    format: image/png
     outputSource: phase/phase_xx_yy_offset
 
   freqs_for_phase_array:
     type: File
+    format: numpy
+    label: "Frequencies"
     outputSource: phase/freqs_for_phase_array
 
   phase_array:
     type: File
+    format: numpy
+    label: "Phase solutions"
     outputSource: phase/phase_array
 
   station_names:
     type: File
+    format: numpy
+    label: "Station names"
     outputSource: phase/station_names
 
   polXX_dirpointing:
     type: File
+    format: image/png
     outputSource: plot_cal_phases/polXX_dirpointing
 
   polYY_dirpointing:
     type: File
+    format: image/png
     outputSource: plot_cal_phases/polYY_dirpointing
 
 

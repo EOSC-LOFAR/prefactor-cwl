@@ -18,12 +18,15 @@ hints:
 inputs:
   amplitude_array:
     type: File
+    format: numpy
 
   dclock_1st_sm:
     type: File
+    format: numpy
 
   dtec_1st_sm:
     type: File
+    format: numpy
 
 outputs:
   dtec_allsols:

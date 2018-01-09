@@ -9,6 +9,7 @@ hints:
 inputs:
   ms_array:
     type: Directory[]
+    format: measurementset
     doc: "List of path patterns of measurement sets with instrument tables"
     inputBinding:
       position: 1
@@ -40,6 +41,8 @@ inputs:
 outputs:
   losoto_h5:
     type: File
+    format: h5parm
+    label: "H5Parm solutions"
     outputBinding:
       glob: "losoto.h5"
 

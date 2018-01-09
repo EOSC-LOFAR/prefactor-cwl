@@ -20,6 +20,7 @@ hints:
 inputs:
   losoto:
     type: File
+    format: h5parm
 
   refstation_id:
     type: int?
@@ -42,21 +43,28 @@ arguments:
 outputs:
     freqs_for_phase_array:
       type: File
+      format: numpy
+      label: "Frequencies"
       outputBinding:
         glob: "freqs_for_phase_array.npy"
 
     phase_array:
       type: File
+      format: numpy
+      label: "Phase solutions"
       outputBinding:
         glob: "cwl_phase_array.npy"
 
     station_names:
       type: File
+      format: numpy
+      label: "Station names"
       outputBinding:
         glob: "cwl_station_names.npy"
 
     phase_xx_yy_offset:
       type: File
+      format: image/png
       outputBinding:
         glob: "phase_xx_yy_offset.png"
 

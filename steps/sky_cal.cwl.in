@@ -16,6 +16,7 @@ requirements:
 inputs:
   ms:
     type: Directory
+    format: measurementset
 
   DirSkymodelCal:
     type: string
@@ -42,6 +43,7 @@ arguments:
 outputs:
    skymodel:
      type: File
+     format: "skymodel"
      outputBinding:
        glob: "selected.skymodel"
 

@@ -9,7 +9,8 @@ hints:
 inputs:
   globaldbname:
     type: File
-    doc: "input h5 parm file"
+    format: h5parm
+    label: "Input H5Parm"
     inputBinding:
       position: 1
 
@@ -33,6 +34,8 @@ arguments:
 outputs:
   amplitude_array:
     type: File
+    format: numpy
+    label: "Smoothed amplitudes"
     outputBinding:
       glob: "fitclock_amplitude_array.npy"
 

@@ -48,11 +48,13 @@ requirements:
 inputs:
   observation:
     type: Directory
+    format: measurementset
     inputBinding:
       position: 1
 
   catalog:
     type: File
+    format: skymodel
     inputBinding:
       position: 3
 
@@ -66,6 +68,7 @@ arguments:
 outputs:
   mscalib:
     type: Directory
+    format: measurementset
     outputBinding:
       glob: "$( inputs.observation.basename )"
 
