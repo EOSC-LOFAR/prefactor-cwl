@@ -30,16 +30,19 @@ inputs:
 outputs:
   dtec_allsols:
     type: File
+    format: image/png
     outputBinding:
       glob: dtec_allsols.png
 
   dclock_allsols:
     type: File
+    format: image/png
     outputBinding:
       glob: dclock_allsols.png
 
   amp_allsols:
     type: File
+    format: image/png
     outputBinding:
       glob: amp_allsols.png
 
