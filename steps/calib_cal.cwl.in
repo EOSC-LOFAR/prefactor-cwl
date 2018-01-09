@@ -38,7 +38,6 @@ hints:
       dockerImageId: kernsuite/prefactor
 
 requirements:
-  - class: InlineJavascriptRequirement
   - class: EnvVarRequirement
     envDef:
       LOFARROOT: /usr
@@ -69,7 +68,7 @@ outputs:
   mscalib:
     type: Directory
     outputBinding:
-      glob: "$( inputs.observation.basename )"
+      glob: $(inputs.observation.basename)
 
 
 $namespaces:

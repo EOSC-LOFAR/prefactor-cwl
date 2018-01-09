@@ -29,7 +29,6 @@ hints:
       dockerImageId: kernsuite/prefactor
 
 requirements:
-  InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
     listing:
       - entryname: losoto.parset
