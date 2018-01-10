@@ -16,7 +16,7 @@ requirements:
 inputs:
   ms:
     type: Directory
-    format: measurementset
+    format: https://casacore.github.io/casacore-notes/229.html
 
   DirSkymodelCal:
     type: string

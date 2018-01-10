@@ -48,7 +48,7 @@ requirements:
 inputs:
   observation:
     type: Directory
-    format: measurementset
+    format: https://casacore.github.io/casacore-notes/229.html
     inputBinding:
       position: 1
 
@@ -68,7 +68,7 @@ arguments:
 outputs:
   mscalib:
     type: Directory
-    format: measurementset
+    format: https://casacore.github.io/casacore-notes/229.html
     outputBinding:
       glob: "$( inputs.observation.basename )"
 

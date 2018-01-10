@@ -20,7 +20,7 @@ hints:
 inputs:
   losoto:
     type: File
-    format: h5parm
+    format: http://revoltek.github.io/losoto/cookbook.pdf
 
   refstation_id:
     type: int?

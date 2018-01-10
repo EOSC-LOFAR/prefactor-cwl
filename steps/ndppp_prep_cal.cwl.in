@@ -29,7 +29,7 @@ hints:
 inputs:
   msin:
     type: Directory
-    format: measurementset
+    format: https://casacore.github.io/casacore-notes/229.html
     inputBinding:
       prefix: "msin="
       separate: False
@@ -159,7 +159,7 @@ inputs:
 outputs:
   msout:
     type: Directory
-    format: measurementset
+    format: https://casacore.github.io/casacore-notes/229.html
     outputBinding:
       glob: "calibrated.MS"
 

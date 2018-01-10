@@ -9,7 +9,7 @@ hints:
 inputs:
   ms_array:
     type: Directory[]
-    format: measurementset
+    format: https://casacore.github.io/casacore-notes/229.html
     doc: "List of path patterns of measurement sets with instrument tables"
     inputBinding:
       position: 1
@@ -41,7 +41,7 @@ inputs:
 outputs:
   losoto_h5:
     type: File
-    format: h5parm
+    format: http://revoltek.github.io/losoto/cookbook.pdf
     label: "H5Parm solutions"
     outputBinding:
       glob: "losoto.h5"

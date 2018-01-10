@@ -15,7 +15,7 @@ inputs:
 outputs:
   losoto_h5:
     type: File
-    format: h5parm
+    format: http://revoltek.github.io/losoto/cookbook.pdf
     label: "H5Parm solutions"
     outputSource: h5imp_cal/losoto_h5
 

@@ -9,7 +9,7 @@ hints:
 inputs:
   globaldbname:
     type: File
-    format: h5parm
+    format: http://revoltek.github.io/losoto/cookbook.pdf
     label: "Input H5Parm"
     inputBinding:
       position: 1
