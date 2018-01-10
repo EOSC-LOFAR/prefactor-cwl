@@ -51,22 +51,22 @@ outputs:
 
   dtec_allsols:
     type: File
-    format: image/png
+    format: iana:image/png
     outputSource: plots/dtec_allsols
 
   dclock_allsols:
     type: File
-    format: image/png
+    format: iana:image/png
     outputSource: plots/dclock_allsols
 
   amp_allsols:
     type: File
-    format: image/png
+    format: iana:image/png
     outputSource: plots/amp_allsols
 
   phase_xx_yy_offset:
     type: File
-    format: image/png
+    format: iana:image/png
     outputSource: phase/phase_xx_yy_offset
 
   freqs_for_phase_array:
@@ -89,12 +89,12 @@ outputs:
 
   polXX_dirpointing:
     type: File
-    format: image/png
+    format: iana:image/png
     outputSource: plot_cal_phases/polXX_dirpointing
 
   polYY_dirpointing:
     type: File
-    format: image/png
+    format: iana:image/png
     outputSource: plot_cal_phases/polYY_dirpointing
 
 
@@ -183,6 +183,7 @@ steps:
 
 $namespaces:
   s: http://schema.org/
+  iana: https://www.iana.org/assignments/media-types/
 $schemas:
   - https://schema.org/docs/schema_org_rdfa.html
 
