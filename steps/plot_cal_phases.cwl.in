@@ -22,12 +22,13 @@ class: CommandLineTool
 
 baseCommand: [CMD_PREFIXlosoto]
 
+label: "Plot raw calibration results"
+
 hints:
   DockerRequirement:
       dockerImageId: kernsuite/prefactor
 
 requirements:
-  InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
     listing:
       - entryname: losoto.parset
@@ -68,11 +69,13 @@ arguments:
 outputs:
   polXX_dirpointing:
     type: File
+    format: image/png
     outputBinding:
       glob: "cwl_polXX_dirpointing.png"
 
   polYY_dirpointing:
     type: File
+    format: image/png
     outputBinding:
       glob: "cwl_polYY_dirpointing.png"
 

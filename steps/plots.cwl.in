@@ -11,6 +11,8 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: [CMD_PREFIXpython]
 
+label: "Plot clock, TEC, amplitude"
+
 hints:
   DockerRequirement:
       dockerImageId: kernsuite/prefactor
@@ -31,16 +33,19 @@ inputs:
 outputs:
   dtec_allsols:
     type: File
+    format: image/png
     outputBinding:
       glob: dtec_allsols.png
 
   dclock_allsols:
     type: File
+    format: image/png
     outputBinding:
       glob: dclock_allsols.png
 
   amp_allsols:
     type: File
+    format: image/png
     outputBinding:
       glob: amp_allsols.png
 

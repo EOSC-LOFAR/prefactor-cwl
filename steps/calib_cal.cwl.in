@@ -31,12 +31,13 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: [CMD_PREFIX/usr/bin/calibrate-stand-alone]
 
+label: "BBS calibrate"
+
 hints:
   DockerRequirement:
       dockerImageId: kernsuite/prefactor
 
 requirements:
-  - class: InlineJavascriptRequirement
   - class: EnvVarRequirement
     envDef:
       LOFARROOT: /usr
@@ -70,7 +71,7 @@ outputs:
     type: Directory
     format: https://casacore.github.io/casacore-notes/229.html
     outputBinding:
-      glob: "$( inputs.observation.basename )"
+      glob: $(inputs.observation.basename)
 
 
 $namespaces:
