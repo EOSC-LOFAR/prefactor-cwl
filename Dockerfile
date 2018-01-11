@@ -1,3 +1,4 @@
 FROM kernsuite/base:3
-RUN docker-apt-install lofar prefactor python-pip make nodejs-legacy
-RUN pip --no-cache-dir install cwlref-runner html5lib "toil[cwl]"
+RUN docker-apt-install lofar prefactor python-pip
+RUN pip --no-cache-dir install html5lib "toil[cwl]"
+ENV PYTHONPATH /usr/lib/prefactor/scripts/
