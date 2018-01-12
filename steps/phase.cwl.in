@@ -45,21 +45,21 @@ arguments:
 outputs:
     freqs_for_phase_array:
       type: File
-      format: numpy
+      format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
       label: "Frequencies"
       outputBinding:
         glob: "freqs_for_phase_array.npy"
 
     phase_array:
       type: File
-      format: numpy
+      format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
       label: "Phase solutions"
       outputBinding:
         glob: "cwl_phase_array.npy"
 
     station_names:
       type: File
-      format: numpy
+      format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
       label: "Station names"
       outputBinding:
         glob: "cwl_station_names.npy"

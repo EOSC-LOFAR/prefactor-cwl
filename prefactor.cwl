@@ -21,31 +21,31 @@ outputs:
 
   dTEC_1st:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "TEC solutions"
     outputSource: fitclock/dTEC_1st
 
   dTEC_1st_sm:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "Smoothed TEC solutions"
     outputSource: fitclock/dTEC_1st_sm
 
   dclock_1st:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "Clock solutions"
     outputSource: fitclock/dclock_1st
 
   dclock_1st_sm:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "Smoothed clock solutions"
     outputSource: fitclock/dclock_1st_sm
 
   amplitude_array:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "Amplitude solutions"
     outputSource: ampl/amplitude_array
 
@@ -71,19 +71,19 @@ outputs:
 
   freqs_for_phase_array:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "Frequencies"
     outputSource: phase/freqs_for_phase_array
 
   phase_array:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "Phase solutions"
     outputSource: phase/phase_array
 
   station_names:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "Station names"
     outputSource: phase/station_names
 

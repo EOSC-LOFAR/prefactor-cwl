@@ -28,28 +28,28 @@ arguments:
 outputs:
   dclock_1st:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "Clock solutions"
     outputBinding:
       glob: fitted_data_dclock_fitclock_1st.npy
 
   dTEC_1st:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "TEC solutions"
     outputBinding:
       glob: fitted_data_dTEC_fitclock_1st.npy
         
   dclock_1st_sm:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "Smoothed clock solutions"
     outputBinding:
       glob: fitted_data_dclock_fitclock_1st.sm.npy
 
   dTEC_1st_sm:
     type: File
-    format: numpy
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
     label: "Smoothed TEC solutions"
     outputBinding:
       glob: fitted_data_dTEC_fitclock_1st.sm.npy
