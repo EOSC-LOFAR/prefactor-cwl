@@ -55,6 +55,7 @@ requirements:
 inputs:
   h5parm:
     type: File
+    format: http://revoltek.github.io/losoto/cookbook.pdf
     inputBinding:
       position: 1
 

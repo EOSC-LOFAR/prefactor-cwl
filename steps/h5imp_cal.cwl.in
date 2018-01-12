@@ -42,6 +42,8 @@ inputs:
 outputs:
   losoto_h5:
     type: File
+    format: http://revoltek.github.io/losoto/cookbook.pdf
+    label: "H5Parm solutions"
     outputBinding:
       glob: "losoto.h5"
 

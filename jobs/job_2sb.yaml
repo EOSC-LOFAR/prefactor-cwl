@@ -1,8 +1,10 @@
 ms_array:
   - class: Directory
     path: ../data/L570745_SB000_uv_first10.MS/
+    format: https://casacore.github.io/casacore-notes/229.html
   - class: Directory
     path: ../data/L570745_SB001_uv_first10.MS/
+    format: https://casacore.github.io/casacore-notes/229.html
 
 avg.freqstep: 2 
 avg.timestep: 2

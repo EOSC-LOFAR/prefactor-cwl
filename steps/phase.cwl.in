@@ -17,6 +17,7 @@ hints:
 inputs:
   losoto:
     type: File
+    format: http://revoltek.github.io/losoto/cookbook.pdf
 
   refstation_id:
     type: int?
@@ -39,21 +40,28 @@ arguments:
 outputs:
     freqs_for_phase_array:
       type: File
+      format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
+      label: "Frequencies"
       outputBinding:
         glob: "freqs_for_phase_array.npy"
 
     phase_array:
       type: File
+      format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
+      label: "Phase solutions"
       outputBinding:
         glob: "cwl_phase_array.npy"
 
     station_names:
       type: File
+      format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
+      label: "Station names"
       outputBinding:
         glob: "cwl_station_names.npy"
 
     phase_xx_yy_offset:
       type: File
+      format: image/png
       outputBinding:
         glob: "phase_xx_yy_offset.png"
 

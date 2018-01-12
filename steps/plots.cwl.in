@@ -20,12 +20,15 @@ hints:
 inputs:
   amplitude_array:
     type: File
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
 
   dclock_1st_sm:
     type: File
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
 
   dtec_1st_sm:
     type: File
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
 
 outputs:
   dtec_allsols:

@@ -11,7 +11,8 @@ hints:
 inputs:
   globaldbname:
     type: File
-    doc: "input h5 parm file"
+    format: http://revoltek.github.io/losoto/cookbook.pdf
+    label: "Input H5Parm"
     inputBinding:
       position: 1
 
@@ -35,6 +36,8 @@ arguments:
 outputs:
   amplitude_array:
     type: File
+    format: https://docs.scipy.org/doc/numpy-dev/neps/npy-format.html
+    label: "Smoothed amplitudes"
     outputBinding:
       glob: "fitclock_amplitude_array.npy"
 
