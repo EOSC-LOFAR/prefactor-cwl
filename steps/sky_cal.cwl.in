@@ -44,7 +44,6 @@ arguments:
 outputs:
    skymodel:
      type: File
-     format: "skymodel"
      outputBinding:
        glob: "selected.skymodel"
 

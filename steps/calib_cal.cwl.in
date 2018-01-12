@@ -55,7 +55,6 @@ inputs:
 
   catalog:
     type: File
-    format: skymodel
     inputBinding:
       position: 3
 
