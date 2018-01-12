@@ -9,11 +9,6 @@ hints:
   DockerRequirement:
       dockerImageId: kernsuite/prefactor
 
-requirements:
-  - class: EnvVarRequirement
-    envDef:
-      PYTHONPATH: /usr/lib/prefactor/scripts/
-
 inputs:
   ms:
     type: Directory

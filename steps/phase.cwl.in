@@ -10,11 +10,6 @@ baseCommand: [CMD_PREFIXpython]
 
 label: "Find global phase offset"
 
-requirements:
-  - class: EnvVarRequirement
-    envDef:
-      PYTHONPATH: /usr/lib/prefactor/scripts/
-
 hints:
   DockerRequirement:
       dockerImageId: kernsuite/prefactor
