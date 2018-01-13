@@ -84,7 +84,7 @@ slurm: data/$(SMALL) .virtualenv/bin/cwltoil singularity
 		jobs/job_20sb.yaml | tee $(RUN)/output
 
 
-mesos: data/$(SMALL) .virtualenv/bin/cwltoil
+mesos: data/$(SMALL) 
 	mkdir -p $(RUN)/results
 	toil-cwl-runner \
 		--batchSystem=mesos \
