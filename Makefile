@@ -85,6 +85,7 @@ slurm: data/$(SMALL) .virtualenv/bin/cwltoil singularity
 
 
 mesos: data/$(SMALL) 
+	export PYTHONPATH=/usr/lib/python2.7/site-packages
 	mkdir -p $(RUN)/results
 	toil-cwl-runner \
 		--batchSystem=mesos \
