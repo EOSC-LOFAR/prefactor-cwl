@@ -86,10 +86,9 @@ slurm: data/$(SMALL) .virtualenv/bin/cwltoil singularity
 
 mesos: data/$(SMALL) .virtualenv/bin/cwltoil
 	mkdir -p $(RUN)/results
-	.virtualenv/bin/toil-cwl-runner \
-		--batchSystem=slurm  \
-		--batchSystem mesos \
-        --mesosMaster 127.0.0.1:5050 \
+	toil-cwl-runner \
+		--batchSystem=mesos \
+		--mesosMaster=145.100.59.50:5050 \
 		--preserve-environment PATH \
 		--no-container \
 		--logFile $(RUN)/log \
