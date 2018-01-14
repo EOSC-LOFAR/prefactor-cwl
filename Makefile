@@ -53,7 +53,7 @@ run-udocker: .virtualenv/bin/udocker steps/ndppp_prep_cal.cwl .virtualenv/bin/cw
 		prefactor.cwl \
 		jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
-run: data/$(SMALL)/ .virtualenv/bin/cwltool steps/ndppp_prep_cal.cwl
+run: .virtualenv/bin/cwltool steps/ndppp_prep_cal.cwl
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool \
 		--leave-tmpdir \
@@ -67,6 +67,8 @@ toil: data/$(SMALL)/ .virtualenv/bin/cwltoil steps/ndppp_prep_cal.cwl
 	.virtualenv/bin/toil-cwl-runner \
 		--logFile $(RUN)/log \
 		--outdir $(RUN)/results \
+		--tmp-outdir-prefix $(PWD)/tmp \
+		--workDir $(PWD)/work \
 		--jobStore file://$(RUN)/job_store \
 		prefactor.cwl \
 		jobs/job_20sb.yaml | tee $(RUN)/output
