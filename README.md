@@ -20,20 +20,6 @@ optional:
 * [Singularity](http://singularity.lbl.gov/)
 
 
-# preperations
-
-You first need to preprocess the CWL files since the standard
-doesn't support Singularity yet. If you want to use singularity run:
-
-```bash
-$ make singularity
-```
-
-otherwise run:
-```bash
-$ make no-singularity
-```
-
 # usage
 
 To run the pipeline with the example dataset just run:

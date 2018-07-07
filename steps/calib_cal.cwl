@@ -29,7 +29,7 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: [CMD_PREFIX/usr/bin/calibrate-stand-alone]
+baseCommand: [/usr/bin/calibrate-stand-alone]
 
 label: "BBS calibrate"
 

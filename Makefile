@@ -2,7 +2,6 @@
 all: run
 SHELL=bash
 RUN := $(PWD)/runs/run_$(shell date +%F-%H-%M-%S)
-SINGULARITY_PREFIX=$(shell echo "singularity, exec, $(PWD)/prefactor.simg, " | sed -e 's/[\/&]/\\&/g')
 ARCHIVE=ftp://ftp.astron.nl/outgoing/EOSC/datasets/
 TINY=L591513_SB000_uv_delta_t_4.MS
 PULSAR=GBT_Lband_PSR.fil
@@ -44,7 +43,7 @@ data/$(SMALL)/: data/$(SMALL_ARCHIVE)
 small: data/$(SMALL)/
 	echo "data/$(SMALL)/ is downloaded"
 
-run-udocker: .virtualenv/bin/udocker steps/ndppp_prep_cal.cwl .virtualenv/bin/cwltool
+run-udocker: .virtualenv/bin/udocker .virtualenv/bin/cwltool
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool \
 		--user-space-docker-cmd `pwd`/.virtualenv/bin/udocker \
@@ -53,7 +52,7 @@ run-udocker: .virtualenv/bin/udocker steps/ndppp_prep_cal.cwl .virtualenv/bin/cw
 		prefactor.cwl \
 		jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
-run: .virtualenv/bin/cwltool steps/ndppp_prep_cal.cwl
+run: .virtualenv/bin/cwltool
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool \
 		--leave-tmpdir \
@@ -62,7 +61,7 @@ run: .virtualenv/bin/cwltool steps/ndppp_prep_cal.cwl
 		prefactor.cwl \
 		jobs/job_2sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
-toil: data/$(SMALL)/ .virtualenv/bin/cwltoil steps/ndppp_prep_cal.cwl
+toil: data/$(SMALL)/ .virtualenv/bin/cwltoil
 	mkdir -p $(RUN)/results
 	.virtualenv/bin/toil-cwl-runner \
 		--logFile $(RUN)/log \
@@ -73,12 +72,11 @@ toil: data/$(SMALL)/ .virtualenv/bin/cwltoil steps/ndppp_prep_cal.cwl
 		prefactor.cwl \
 		jobs/job_20sb.yaml | tee $(RUN)/output
 
-slurm: data/$(SMALL) .virtualenv/bin/cwltoil singularity
+slurm: data/$(SMALL) .virtualenv/bin/cwltoil
 	mkdir -p $(RUN)/results
 	.virtualenv/bin/toil-cwl-runner \
 		--batchSystem=slurm  \
 		--preserve-environment PATH \
-		--no-container \
 		--logFile $(RUN)/log \
 		--outdir $(RUN)/results \
 		--jobStore file://$(RUN)/job_store \
@@ -93,7 +91,6 @@ mesos: data/$(SMALL)
 		--batchSystem=mesos \
 		--mesosMaster=145.100.59.50:5050 \
 		--preserve-environment PATH \
-		--no-container \
 		--logFile $(RUN)/log \
 		--outdir $(RUN)/results \
 		--jobStore file://$(RUN)/job_store \
@@ -107,11 +104,3 @@ prefactor.simg:
 	singularity build prefactor.simg docker://kernsuite/prefactor
 
 singularity: prefactor.simg
-	for i in `ls steps/*.in`; do sed 's/CMD_PREFIX/$(SINGULARITY_PREFIX)/g' $$i> $${i:0:-3}; done
-
-no-singularity:
-	for i in `ls steps/*.in`; do sed 's/CMD_PREFIX//g' $$i> $${i:0:-3}; done
-
-steps/ndppp_prep_cal.cwl:
-	$(error "Run '$ make singularity' or '$ make no-singularity' first")
-

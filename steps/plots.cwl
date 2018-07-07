@@ -9,7 +9,7 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: [CMD_PREFIXpython]
+baseCommand: [python]
 
 label: "Plot clock, TEC, amplitude"
 

@@ -20,7 +20,7 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-baseCommand: [CMD_PREFIXlosoto]
+baseCommand: [losoto]
 
 label: "Plot raw calibration results"
 
