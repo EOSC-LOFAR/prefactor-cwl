@@ -29,7 +29,7 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: [CMD_PREFIXpython,
+baseCommand: [python,
              /usr/lib/python2.7/dist-packages/lofarpipe/recipes/plugins/PipelineStep_createMapfile.py,
              createmap_cal.mapfile]
 
