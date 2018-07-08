@@ -1,6 +1,6 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: [CMD_PREFIXpython, /usr/lib/prefactor/scripts/examine_npys.py]
+baseCommand: [python, /usr/lib/prefactor/scripts/examine_npys.py]
 
 hints:
   DockerRequirement:

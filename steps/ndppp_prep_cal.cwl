@@ -20,7 +20,7 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: [CMD_PREFIXNDPPP, msout=calibrated.MS]
+baseCommand: [NDPPP, msout=calibrated.MS]
 
 label: "DPPP flag and average"
 

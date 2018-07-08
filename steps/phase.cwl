@@ -6,7 +6,7 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-baseCommand: [CMD_PREFIXpython]
+baseCommand: [python]
 
 label: "Find global phase offset"
 

@@ -1,6 +1,6 @@
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: [CMD_PREFIXpython, /usr/lib/prefactor/scripts/fit_clocktec_initialguess_losoto.py]
+baseCommand: [python, /usr/lib/prefactor/scripts/fit_clocktec_initialguess_losoto.py]
 
 label: "Separate clock/TEC"
 
