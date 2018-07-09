@@ -1,0 +1,27 @@
+1c1
+< #! /usr/bin/python
+---
+> #! /usr/bin/env python
+61,67d60
+<                 # Add (virtual) elevation column to MS
+<                 try:
+<                     pt.addDerivedMSCal(self.files[MS_id])
+<                 except RuntimeError:
+<                     # RuntimeError indicates column already exists
+<                     pass
+< 
+69a63,64
+>                 el_values = pt.taql("SELECT mscal.azel1()[1] AS el from "
+>                                     + self.files[MS_id] + " limit ::10000").getcol("el")
+71c66
+<                     global_el_values = tab.getcol('AZEL1', rowincr=10000)[:, 1]
+---
+>                     global_el_values = el_values
+73,77c68
+<                     global_el_values = np.hstack( (global_el_values, tab.getcol('AZEL1', rowincr=10000)[:, 1]) )
+<                 tab.close()
+< 
+<                 # Remove (virtual) elevation column from MS
+<                 pt.removeDerivedMSCal(self.files[MS_id])
+---
+>                     global_el_values = np.hstack( (global_el_values, el_values ) )
