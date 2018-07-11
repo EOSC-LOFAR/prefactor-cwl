@@ -3,7 +3,7 @@ cwlVersion: v1.0
 $namespaces:
   s: 'http://schema.org/'
   sbg: 'https://www.sevenbridges.com'
-baseCommand: [CMD_PREFIXpython]
+baseCommand: [python]
 inputs:
   - id: prepcals
     type: 'Directory[]'

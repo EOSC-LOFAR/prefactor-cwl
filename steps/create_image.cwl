@@ -4,7 +4,7 @@ $namespaces:
   s: 'http://schema.org/'
   sbg: 'https://www.sevenbridges.com'
 id: create_image
-baseCommand: [CMD_PREFIXpython]
+baseCommand: [python]
 inputs:
   - id: mapfile_deep_low_size
     type: File
