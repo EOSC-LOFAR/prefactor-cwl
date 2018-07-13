@@ -3,6 +3,10 @@ cwlVersion: v1.0
 $namespaces:
   s: 'http://schema.org/'
   sbg: 'https://www.sevenbridges.com'
+hints:
+  DockerRequirement:
+      dockerImageId: kernsuite/prefactor
+
 baseCommand: [python]
 inputs:
   - id: prepcals
