@@ -6,7 +6,6 @@ before_install:
   - true
 install:
   - make docker
-  - make no-singularity
 before_script:
   - git clone https://github.com/common-workflow-language/schema_salad.git salad && cd ./salad && pip install . --user && cd ..
 script:
