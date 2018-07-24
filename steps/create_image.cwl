@@ -67,7 +67,7 @@ arguments:
       cmlopts.append(ast.literal_eval(nwfil.read())[0]["file"])
       cmlopts.extend(sys.argv[1:])
       print " ".join(cmlopts)
-      SP.call(cmlopts)
+         SP.call(cmlopts)
   - prefix: '-padding'
     valueFrom: $(inputs.image_padding)
   - prefix: '-niter'
@@ -88,11 +88,11 @@ arguments:
   - prefix: '-weighting-rank-filter'
     valueFrom: '3'
   - prefix: '-temp-dir'
-    valueFrom: .
+    valueFrom: $(runtime.tmpdir)
   - prefix: '-scale'
     valueFrom: $(inputs.cellsize_lowres_deg)
   - prefix: '-j'
-    valueFrom: $(inputs.numcpu)
+    valueFrom: $(runtime.cores)
   - prefix: '-mem'
     valueFrom: $(inputs.mem_pct)
   - valueFrom: '-no-update-model-required'
