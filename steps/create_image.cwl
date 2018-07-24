@@ -50,8 +50,7 @@ outputs:
       glob: wsclean-MFS-model.fits
 label: create_image
 arguments:
-  - position: 0
-    prefix: '-c'
+  - prefix: '-c'
     valueFrom: |
       import ast
       import sys
@@ -69,63 +68,45 @@ arguments:
       cmlopts.extend(sys.argv[1:])
       print " ".join(cmlopts)
       SP.call(cmlopts)
-  - position: 1
-    prefix: '-padding'
+  - prefix: '-padding'
     valueFrom: $(inputs.image_padding)
-  - position: 2
-    prefix: '-niter'
+  - prefix: '-niter'
     valueFrom: '20000'
-  - position: 3
-    prefix: '-threshold'
+  - prefix: '-threshold'
     valueFrom: '0.0'
-  - position: 4
-    prefix: '-pol'
+  - prefix: '-pol'
     valueFrom: I
-  - position: 5
-    prefix: '-weight'
+  - prefix: '-weight'
     valueFrom: briggs
-  - position: 6
-    prefix: ''
+  - prefix: ''
     separate: false
     valueFrom: '0.0'
-  - position: 7
-    prefix: '-mgain'
+  - prefix: '-mgain'
     valueFrom: '0.65'
-  - position: 8
-    prefix: '-minuv-l'
+  - prefix: '-minuv-l'
     valueFrom: '80'
-  - position: 9
-    prefix: '-maxuv-l'
+  - prefix: '-maxuv-l'
     valueFrom: $(inputs.maxlambda_lowres)
-  - position: 10
-    prefix: '-weighting-rank-filter'
+  - prefix: '-weighting-rank-filter'
     valueFrom: '3'
-  - position: 11
-    prefix: '-temp-dir'
+  - prefix: '-temp-dir'
     valueFrom: .
-  - position: 12
-    prefix: '-scale'
+  - prefix: '-scale'
     valueFrom: $(inputs.cellsize_lowres_deg)
-  - position: 13
-    prefix: '-j'
+  - prefix: '-j'
     valueFrom: $(inputs.numcpu)
-  - position: 14
-    prefix: '-mem'
+  - prefix: '-mem'
     valueFrom: $(inputs.mem_pct)
-  - position: 15
-    prefix: ''
+  - prefix: ''
     separate: false
     valueFrom: '-no-update-model-required'
-  - position: 16
-    prefix: ''
+  - prefix: ''
     separate: false
     valueFrom: '-reorder'
-  - position: 17
-    prefix: ''
+  - prefix: ''
     separate: false
     valueFrom: '-fit-beam'
-  - position: 18
-    prefix: ''
+  - prefix: ''
     separate: false
     valueFrom: '-join-channels'
 requirements:
@@ -146,6 +127,3 @@ $schemas:
       path: /path/to/input.ext
       secondaryFiles: []
       size: 0
-  runtime:
-    cores: 1
-    ram: 1000
