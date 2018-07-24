@@ -78,9 +78,7 @@ arguments:
     valueFrom: I
   - prefix: '-weight'
     valueFrom: briggs
-  - prefix: ''
-    separate: false
-    valueFrom: '0.0'
+  - valueFrom: '0.0'
   - prefix: '-mgain'
     valueFrom: '0.65'
   - prefix: '-minuv-l'
@@ -97,18 +95,10 @@ arguments:
     valueFrom: $(inputs.numcpu)
   - prefix: '-mem'
     valueFrom: $(inputs.mem_pct)
-  - prefix: ''
-    separate: false
-    valueFrom: '-no-update-model-required'
-  - prefix: ''
-    separate: false
-    valueFrom: '-reorder'
-  - prefix: ''
-    separate: false
-    valueFrom: '-fit-beam'
-  - prefix: ''
-    separate: false
-    valueFrom: '-join-channels'
+  - valueFrom: '-no-update-model-required'
+  - valueFrom: '-reorder'
+  - valueFrom: '-fit-beam'
+  - valueFrom: '-join-channels'
 requirements:
   - class: InlineJavascriptRequirement
 $schemas:
