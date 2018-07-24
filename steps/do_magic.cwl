@@ -93,9 +93,6 @@ arguments:
            outmapname="cwl",
            mapfile_dir=os.path.basename("."))
 requirements:
-  - class: EnvVarRequirement
-    envDef:
-      PYTHONPATH: /usr/lib/prefactor/scripts
   - class: InlineJavascriptRequirement
 $schemas:
   - 'https://schema.org/docs/schema_org_rdfa.html'
