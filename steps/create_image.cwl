@@ -95,10 +95,10 @@ arguments:
     valueFrom: $(runtime.cores)
   - prefix: '-mem'
     valueFrom: $(inputs.mem_pct)
-  - valueFrom: '-no-update-model-required'
-  - valueFrom: '-reorder'
-  - valueFrom: '-fit-beam'
-  - valueFrom: '-join-channels'
+  - -no-update-model-required
+  - -reorder
+  - -fit-beam
+  - -join-channels
 requirements:
   - class: InlineJavascriptRequirement
 $schemas:
