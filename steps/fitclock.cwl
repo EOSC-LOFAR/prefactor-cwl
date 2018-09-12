@@ -6,7 +6,7 @@ label: "Separate clock/TEC"
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 inputs:
   globaldbname:

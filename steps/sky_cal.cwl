@@ -7,7 +7,7 @@ label: "Find calibrator skymodel"
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 inputs:
   ms:

@@ -4,7 +4,7 @@ $namespaces:
   s: 'http://schema.org/'
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 baseCommand: [python]
 inputs:

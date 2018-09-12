@@ -26,7 +26,7 @@ label: "Plot raw calibration results"
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 requirements:
   InitialWorkDirRequirement:

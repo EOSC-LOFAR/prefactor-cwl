@@ -35,7 +35,7 @@ label: "BBS calibrate"
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 requirements:
   - class: EnvVarRequirement

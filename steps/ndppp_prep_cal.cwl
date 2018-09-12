@@ -26,7 +26,7 @@ label: "DPPP flag and average"
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 inputs:
   msin:

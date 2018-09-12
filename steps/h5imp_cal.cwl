@@ -6,7 +6,7 @@ label: "Convert solutions to H5parm"
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 inputs:
   ms_array:

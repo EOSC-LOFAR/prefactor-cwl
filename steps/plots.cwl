@@ -15,7 +15,7 @@ label: "Plot clock, TEC, amplitude"
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 inputs:
   amplitude_array:

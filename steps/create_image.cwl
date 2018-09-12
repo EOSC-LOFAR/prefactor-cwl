@@ -6,7 +6,7 @@ id: create_image
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 baseCommand: [python]
 inputs:
