@@ -2,7 +2,6 @@ class: CommandLineTool
 cwlVersion: v1.0
 $namespaces:
   s: 'http://schema.org/'
-  sbg: 'https://www.sevenbridges.com'
 id: create_image
 
 hints:
@@ -106,14 +105,3 @@ $schemas:
 's:author':
   's:person.url': 'https://orcid.org/0000-0001-5125-9539'
 's:license': 'https://mit-license.org/'
-'sbg:job':
-  inputs:
-    input:
-      basename: input.ext
-      class: File
-      contents: file contents
-      nameext: .ext
-      nameroot: input
-      path: /path/to/input.ext
-      secondaryFiles: []
-      size: 0
