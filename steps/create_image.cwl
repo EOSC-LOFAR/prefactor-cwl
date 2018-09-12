@@ -24,8 +24,6 @@ inputs:
     type: float
   - id: numcpu
     type: int
-  - id: mem_pct
-    type: int
   - id: prepcals
     type: 'Directory[]'
     inputBinding:
@@ -92,8 +90,8 @@ arguments:
     valueFrom: $(inputs.cellsize_lowres_deg)
   - prefix: '-j'
     valueFrom: $(runtime.cores)
-  - prefix: '-mem'
-    valueFrom: $(inputs.mem_pct)
+  - prefix: '-abs-mem'
+    valueFrom: $(runtime.ram)
   - -no-update-model-required
   - -reorder
   - -fit-beam
