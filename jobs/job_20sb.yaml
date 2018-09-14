@@ -66,3 +66,8 @@ reference_station: CS001HBA0
 avg.freqstep: 2
 avg.timestep: 2
 flag.baseline: "[ CS013HBA* ]"
+numcpu: 64
+mem_pct: 95
+maxlambda_lowres: 2000
+cellsize_lowres_deg: 0.00694
+image_padding: 1.4

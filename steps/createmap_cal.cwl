@@ -35,7 +35,7 @@ baseCommand: [python,
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 inputs:
   number:

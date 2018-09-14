@@ -11,6 +11,11 @@ inputs:
   avg.freqstep: int
   avg.timestep: int
   flag.baseline: string
+  maxlambda_lowres: int
+  cellsize_lowres_deg: float
+  numcpu: int
+  mem_pct: int
+  image_padding: float
 
 outputs:
   losoto_h5:
@@ -97,6 +102,25 @@ outputs:
     format: iana:image/png
     outputSource: plot_cal_phases/polYY_dirpointing
 
+  psf:
+    type: File
+    format: iana:image/fits
+    outputSource: create_image/psf
+
+  residual:
+    type: File
+    format: iana:image/fits
+    outputSource: create_image/residual
+
+  model:
+    type: File
+    format: iana:image/fits
+    outputSource: create_image/model
+
+  dirty:
+    type: File
+    format: iana:image/fits
+    outputSource: create_image/dirty
 
 
 steps:
@@ -180,7 +204,46 @@ steps:
     out:
       [polXX_dirpointing, polYY_dirpointing]
 
+  do_magic:
+    run: steps/do_magic.cwl
+    in:
+      prepcals: calib_cal/mscalib
+    out:
+      - mapfile_paths
+      - mapfile_deep_high_padded
+      - mapfile_deep_high_size
+      - mapfile_deep_low_padded_size
+      - mapfile_deep_low_size
+      - mapfile_freqstep
+      - mapfile_high_padded_size
+      - mapfile_high_size
+      - mapfile_low_padded_size
+      - mapfile_low_size
+      - mapfile_nbands
+      - mapfile_nchansout_clean1
+      - mapfile_nwavelengths_high
+      - mapfile_nwavelengths_low
+      - mapfile_single
+      - mapfile_timestep
 
+  create_image:
+    run: steps/create_image.cwl
+    in:
+      mapfile_deep_low_size: do_magic/mapfile_deep_low_size
+      mapfile_nchansout_clean1: do_magic/mapfile_nchansout_clean1
+      mapfile_nwavelengths_low: do_magic/mapfile_nwavelengths_low
+      prepcals: calib_cal/mscalib
+      image_padding: image_padding
+      maxlambda_lowres: maxlambda_lowres
+      cellsize_lowres_deg: cellsize_lowres_deg
+      numcpu: numcpu
+      mem_pct: mem_pct
+    out:
+     - psf
+     - dirty
+     - residual
+     - model
+   
 $namespaces:
   s: http://schema.org/
   iana: https://www.iana.org/assignments/media-types/
@@ -190,3 +253,4 @@ $schemas:
 s:license: 'https://mit-license.org/'
 s:author:
   s:person.url: 'http://orcid.org/0000-0002-6136-3724'
+  s:person.url: 'https://orcid.org/0000-0001-5125-9539'

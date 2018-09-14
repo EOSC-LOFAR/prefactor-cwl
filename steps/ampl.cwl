@@ -6,7 +6,7 @@ label: "Smooth amplitudes"
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 inputs:
   globaldbname:

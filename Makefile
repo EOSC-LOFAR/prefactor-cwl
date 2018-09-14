@@ -59,7 +59,7 @@ run: .virtualenv/bin/cwltool
 		--cachedir cache \
 		--outdir $(RUN)/results \
 		prefactor.cwl \
-		jobs/job_2sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
+		jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
 toil: data/$(SMALL)/ .virtualenv/bin/cwltoil
 	mkdir -p $(RUN)/results

@@ -4,7 +4,7 @@ baseCommand: [python, /usr/lib/prefactor/scripts/examine_npys.py]
 
 hints:
   DockerRequirement:
-      dockerImageId: kernsuite/prefactor
+      dockerPull: kernsuite/prefactor
 
 inputs:
   calsource:
