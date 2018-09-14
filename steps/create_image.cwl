@@ -64,7 +64,7 @@ arguments:
       cmlopts.append(ast.literal_eval(nwfil.read())[0]["file"])
       cmlopts.extend(sys.argv[1:])
       print " ".join(cmlopts)
-         SP.call(cmlopts)
+      SP.call(cmlopts)
   - prefix: '-padding'
     valueFrom: $(inputs.image_padding)
   - prefix: '-niter'
