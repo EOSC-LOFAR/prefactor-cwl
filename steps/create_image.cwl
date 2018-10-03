@@ -22,8 +22,6 @@ inputs:
     type: int
   - id: cellsize_lowres_deg
     type: float
-  - id: numcpu
-    type: int
   - id: prepcals
     type: 'Directory[]'
     inputBinding:
