@@ -13,8 +13,6 @@ inputs:
   flag.baseline: string
   maxlambda_lowres: int
   cellsize_lowres_deg: float
-  numcpu: int
-  mem_pct: int
   image_padding: float
 
 outputs:
@@ -236,8 +234,6 @@ steps:
       image_padding: image_padding
       maxlambda_lowres: maxlambda_lowres
       cellsize_lowres_deg: cellsize_lowres_deg
-      numcpu: numcpu
-      mem_pct: mem_pct
     out:
      - psf
      - dirty
