@@ -61,9 +61,44 @@ run: .virtualenv/bin/cwltool
 		prefactor.cwl \
 		jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
 
+run-singularity: .virtualenv/bin/cwltool
+	mkdir -p $(RUN)
+	.virtualenv/bin/cwltool \
+		--singularity \
+		--leave-tmpdir \
+		--cachedir cache \
+		--outdir $(RUN)/results \
+		prefactor.cwl \
+		jobs/job_20sb.yaml > >(tee $(RUN)/output) 2> >(tee $(RUN)/log >&2)
+
+
 toil: data/$(SMALL)/ .virtualenv/bin/cwltoil
 	mkdir -p $(RUN)/results
 	.virtualenv/bin/toil-cwl-runner \
+		--logFile $(RUN)/log \
+		--outdir $(RUN)/results \
+		--tmp-outdir-prefix $(PWD)/tmp \
+		--workDir $(PWD)/work \
+		--jobStore file://$(RUN)/job_store \
+		prefactor.cwl \
+		jobs/job_20sb.yaml | tee $(RUN)/output
+
+toil-singularity: data/$(SMALL)/ .virtualenv/bin/cwltoil
+	mkdir -p $(RUN)/results
+	.virtualenv/bin/toil-cwl-runner \
+		--singularity \
+		--logFile $(RUN)/log \
+		--outdir $(RUN)/results \
+		--tmp-outdir-prefix $(PWD)/tmp \
+		--workDir $(PWD)/work \
+		--jobStore file://$(RUN)/job_store \
+		prefactor.cwl \
+		jobs/job_20sb.yaml | tee $(RUN)/output
+
+toil-udocker: data/$(SMALL)/ .virtualenv/bin/cwltoil
+	mkdir -p $(RUN)/results
+	.virtualenv/bin/toil-cwl-runner \
+		--user-space-docker-cmd `pwd`/.virtualenv/bin/udocker \
 		--logFile $(RUN)/log \
 		--outdir $(RUN)/results \
 		--tmp-outdir-prefix $(PWD)/tmp \
@@ -83,6 +118,31 @@ slurm: data/$(SMALL) .virtualenv/bin/cwltoil
 		prefactor.cwl \
 		jobs/job_20sb.yaml | tee $(RUN)/output
 
+
+slurm-singularity: data/$(SMALL) .virtualenv/bin/cwltoil
+	mkdir -p $(RUN)/results
+	.virtualenv/bin/toil-cwl-runner \
+		--singularity \
+		--batchSystem=slurm  \
+		--preserve-environment PATH \
+		--logFile $(RUN)/log \
+		--outdir $(RUN)/results \
+		--jobStore file://$(RUN)/job_store \
+		prefactor.cwl \
+		jobs/job_20sb.yaml | tee $(RUN)/output
+
+
+slurm-udocker: data/$(SMALL) .virtualenv/bin/cwltoil
+	mkdir -p $(RUN)/results
+	.virtualenv/bin/toil-cwl-runner \
+		--user-space-docker-cmd `pwd`/.virtualenv/bin/udocker \
+		--batchSystem=slurm  \
+		--preserve-environment PATH \
+		--logFile $(RUN)/log \
+		--outdir $(RUN)/results \
+		--jobStore file://$(RUN)/job_store \
+		prefactor.cwl \
+		jobs/job_20sb.yaml | tee $(RUN)/output
 
 mesos: data/$(SMALL) 
 	export PYTHONPATH=/usr/lib/python2.7/site-packages
