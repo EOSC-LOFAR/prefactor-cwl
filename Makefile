@@ -1,4 +1,4 @@
-.PHONY: clean run small docker
+.PHONY: clean run small
 all: run
 SHELL=bash
 RUN := $(PWD)/runs/run_$(shell date +%F-%H-%M-%S)
@@ -97,10 +97,4 @@ mesos: data/$(SMALL)
 		prefactor.cwl \
 		jobs/job_20sb.yaml | tee $(RUN)/output
 
-docker:
-	docker build docker/ -t kernsuite/prefactor
 
-prefactor.simg:
-	singularity build prefactor.simg docker://kernsuite/prefactor
-
-singularity: prefactor.simg
