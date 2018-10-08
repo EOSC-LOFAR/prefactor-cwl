@@ -1,6 +1,5 @@
-#cwlref-runner
 html5lib
--e git://github.com/BD2KGenomics/toil.git@682aa3a8b36aab9d187b0b08ef3509a62973ac85#egg=toil[cwl,mesos,google]
+toil[cwl,mesos,google]>=3.18.0
 boto
 pycrypto
 protobuf
