@@ -1,6 +1,8 @@
 .virtualenv/
 *.swp
 data/*
+work/*
+tmp/*
 cache/*
 results/*
 out_tmpdir*/
