@@ -1,4 +1,4 @@
-.PHONY: clean run small
+.PHONY: clean run small docker run-udocker run-singularity toil-udocker toil-singularity
 all: run
 SHELL=bash
 RUN := $(PWD)/runs/run_$(shell date +%F-%H-%M-%S)
@@ -29,7 +29,7 @@ data/$(PULSAR):
 	cd data && wget $(ARCHIVE)$(PULSAR)
 
 data/$(TINY)/:
-	cd data && wget $(ARCHIVE)$(TINY).tar.xz && tar Jxvf $(TINY).tar.xz
+	cd data && wget $(ARCHIVE)$(TINY).tar.xz && tar Jxvmf $(TINY).tar.xz
 
 tiny: data/$(TINY)/
 	echo "data/$(TINY)/ is downloaded"
@@ -38,7 +38,7 @@ data/$(SMALL_ARCHIVE):
 	cd data && wget $(ARCHIVE)$(SMALL_ARCHIVE)
 
 data/$(SMALL)/: data/$(SMALL_ARCHIVE)
-	cd data && tar Jxvf $(SMALL_ARCHIVE)
+	cd data && tar Jxmvf $(SMALL_ARCHIVE)
 
 small: data/$(SMALL)/
 	echo "data/$(SMALL)/ is downloaded"
@@ -157,4 +157,5 @@ mesos: data/$(SMALL)
 		prefactor.cwl \
 		jobs/job_20sb.yaml | tee $(RUN)/output
 
-
+docker:
+	docker build -t kernsuite/prefactor .
