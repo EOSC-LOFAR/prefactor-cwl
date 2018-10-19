@@ -46,6 +46,7 @@ small: data/$(SMALL)/
 run-udocker: .virtualenv/bin/udocker .virtualenv/bin/cwltool
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool \
+	        --parallel \
 		--user-space-docker-cmd `pwd`/.virtualenv/bin/udocker \
 		--cachedir cache \
 		--outdir $(RUN)/results \
@@ -55,6 +56,7 @@ run-udocker: .virtualenv/bin/udocker .virtualenv/bin/cwltool
 run: .virtualenv/bin/cwltool
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool \
+		--parallel \
 		--leave-tmpdir \
 		--cachedir cache \
 		--outdir $(RUN)/results \
@@ -64,6 +66,7 @@ run: .virtualenv/bin/cwltool
 run-singularity: .virtualenv/bin/cwltool
 	mkdir -p $(RUN)
 	.virtualenv/bin/cwltool \
+		--parallel \
 		--singularity \
 		--leave-tmpdir \
 		--cachedir cache \
