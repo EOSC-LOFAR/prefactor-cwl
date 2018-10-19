@@ -1,7 +1,6 @@
 cwlVersion: v1.0
 class: Workflow
 
-cwlVersion: v1.0
 requirements:
   ScatterFeatureRequirement: {}
 
@@ -248,5 +247,5 @@ $schemas:
 
 s:license: 'https://mit-license.org/'
 s:author:
-  s:person.url: 'http://orcid.org/0000-0002-6136-3724'
-  s:person.url: 'https://orcid.org/0000-0001-5125-9539'
+  - s:person.url: 'http://orcid.org/0000-0002-6136-3724'
+  - s:person.url: 'https://orcid.org/0000-0001-5125-9539'
