@@ -86,10 +86,6 @@ arguments:
     valueFrom: $(runtime.tmpdir)
   - prefix: '-scale'
     valueFrom: $(inputs.cellsize_lowres_deg)
-  - prefix: '-j'
-    valueFrom: $(runtime.cores)
-  - prefix: '-abs-mem'
-    valueFrom: $(runtime.ram)
   - -no-update-model-required
   - -reorder
   - -fit-beam
