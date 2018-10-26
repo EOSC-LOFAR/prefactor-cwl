@@ -43,6 +43,10 @@ outputs:
     type: File
     outputBinding:
       glob: wsclean-MFS-model.fits
+  - id: image
+    type: File
+    outputBinding:
+        glob: wsclean-MFS-image.fits
 label: create_image
 arguments:
   - prefix: '-c'
